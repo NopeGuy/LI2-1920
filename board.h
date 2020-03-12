@@ -1,9 +1,10 @@
-//
-// Created by Diogo on 10/03/2020.
-//
 #define n 8
-#ifndef RASTROSSHIT_BOARD_H
-#define RASTROSSHIT_BOARD_H
+#ifndef SHITRASTROS_BOARD_H
+#define SHITRASTROS_BOARD_H
 
-#endif //RASTROSSHIT_BOARD_H
-void createBoard(char board[n][n]);
+void printBoard(char board[n][n]);
+void inicializar_board(char board[n][n]);
+void initialize_array();
+void add_position(char letter, char number, char board [n][n]);
+
+#endif //SHITRASTROS_BOARD_H

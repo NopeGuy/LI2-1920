@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "board.h"
-#define n 8
+#include "input.h"
 
 int main() {
     char board[n][n];
-    printf("Welcome to RASTROS!");
-    createBoard(board);
+    printf("\nWelcome to RASTROS!");
+    inicializar_board(board);
+    while (true){
+        printBoard(board);
+        input(board);
+    }
+
     return 0;
 }
 
