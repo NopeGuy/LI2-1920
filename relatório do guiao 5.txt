@@ -1,0 +1,5 @@
+Relatório de Aula- Guiao 5
+
+Conseguimos criar os vários módulos sem dificuldades, no entanto surgiu-nos uma dúvida de como associar a leitura do input com a jogada , por exemplo , jogada a1, como fazer com que esse input fosse lido com a posiçao a 1
+Para além disso ainda estivemos algum tempo a pensar por onde deviamos começar e onde escrever.
+Todas as tarefas propostas do guião 5 estão concluidas.
