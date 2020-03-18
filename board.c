@@ -2,7 +2,6 @@
 #include "board.h"
 #include <unistd.h>
 #define n 8
-int positions[128];
 
 void printBoard(char board[n][n]) {
 
@@ -40,31 +39,6 @@ void inicializar_board(char board[n][n]) {
             board[i][j] = ' ';
         }
     }
-
-
-    char letter;
-    char number;
-    for(int i = 0; i< 128; i++){
-        if(positions[i] != NULL)
-        {
-            if(i%2==0){
-                letter = positions[i];
-            }
-            else{
-                number = positions[i];
-                board [letter-'a'][number-1];
-            }
-        }
-        else
-            break;
-    }
-}
-
-
-void initialize_array(){
-    for(int i =0;i<128;i++){
-        positions[i] = NULL;
-    }
 }
 
 void add_position(char letter, char number, char board [n][n]){
@@ -72,7 +46,6 @@ void add_position(char letter, char number, char board [n][n]){
         board [(int)(letter-'a')][(int)(number-49)]='#';
     else printf ("Escolha outra posição");
 }
-   //board[3][4] = '#';
-
-
+//
+//void mostrar_tabuleiro(ESTADO *estado);
 
