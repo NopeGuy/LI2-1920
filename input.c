@@ -13,7 +13,8 @@ int input(char board[n][n]) {
     scanf("%s", &input);
     pos1 = tolower(input[0]);
     pos2 = input[1];
-    add_position(pos1,pos2,board);
+    printf("%d\n",pos1);
+    return add_position(pos1,pos2,board);
 }
 
 //

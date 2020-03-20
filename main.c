@@ -5,11 +5,12 @@
 
 int main() {
     char board[n][n];
+    int  finish=0;
     printf("\nWelcome to RASTROS!");
     inicializar_board(board);
-    while (true){
+    while (!finish){
         printBoard(board);
-        input(board);
+        finish=input(board);
     }
 
     return 0;
