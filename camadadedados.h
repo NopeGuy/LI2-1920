@@ -1,5 +1,5 @@
-#ifndef SHITRASTROS_CAMADADEDADOS_H
-#define SHITRASTROS_CAMADADEDADOS_H
+#ifndef RASTROS_CAMADADEDADOS_H
+#define RASTROS_CAMADADEDADOS_H
 
 typedef enum {
     UM = '1',
@@ -32,4 +32,4 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 
 
 
-#endif //SHITRASTROS_CAMADADEDADOS_H
+#endif

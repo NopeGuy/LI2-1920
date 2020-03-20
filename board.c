@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "board.h"
-#include <unistd.h>
 #include "camadadedados.h"
 #include <stdlib.h>
 #include <stdbool.h>
