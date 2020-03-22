@@ -66,6 +66,12 @@ void inicializar_board(char board[n][n]) {
     }
     printBoard(board);
 }
+
+// Esta função verifica quando o jogo se dá por terminado, contamos 2 casos, onde o primeiro dá vitoria ao player 1 ou 2 casos.
+// estes cheguem as casas [0][7] ou [7][0].
+// consideramos no segundo caso , a hipótese de um player ficar rodeado por # , dando assim a vitória ao outro jogador.
+//  check faz com que caso seja o player 1 rodeado entao com o check a vitoria será dada ao player 2 e vice-versa.
+
 bool check_finish (char letter, char number, char board[n][n]){
     int check=1;
     if(letter-'a'==0 && number-'1'==7) {
@@ -89,7 +95,7 @@ bool check_finish (char letter, char number, char board[n][n]){
     }
     if (check){
         printf("Jogador %d vence!", (e->jogador_atual)%2+1);
-    return true;
+        return true;
     }
     return false;
 }
@@ -123,4 +129,3 @@ bool add_position(char letter, char number, char board [n][n]){
 
     return false;
 }
-

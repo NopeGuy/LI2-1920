@@ -1,6 +1,10 @@
+/**
+@file camadadedados.h
+Definição das funções de estado
+*/
+
 #ifndef RASTROS_CAMADADEDADOS_H
 #define RASTROS_CAMADADEDADOS_H
-
 
 typedef enum {
     OK,
@@ -9,6 +13,12 @@ typedef enum {
     ERRO_LER_TAB,
     ERRO_ABRIR_FICHEIRO,
 } ERROS;
+
+/**
+\brief Tipo de Dados para as casas do tabuleiro.
+ *Dados para cada casa no tabuleiro , as vazias e onde é as casas de vitória e onde se inicia a peça branca.
+*/
+
 typedef enum {
     UM = '1',
     DOIS = '2',
@@ -16,14 +26,31 @@ typedef enum {
     BRANCA = 'O',
     PRETA = '#'
 } CASA;
+
+/**
+\brief Tipo de Dados das colunas e linhas do tabuleiro.
+ */
+
 typedef struct {
     int coluna;
     int linha;
 } COORDENADA;
+
+/**
+\brief Tipo de dados dos jogadores e da devida jogada.
+ *Coordenada da jogada de casa jogador.
+ */
+
 typedef struct {
-    COORDENADA jogador1;    
+    COORDENADA jogador1;
     COORDENADA jogador2;
 } JOGADA;
+
+/**
+\brief São dados de modificação de estado.
+ * É um Prompt que guarda todas as jogadas efetuadas por cada jogador ao longo do jogo.
+ */
+
 typedef JOGADA JOGADAS[64];
 typedef struct {
     CASA tab[8][8];
@@ -33,6 +60,10 @@ typedef struct {
     int jogador_atual;
     int num_comando;
 } ESTADO;
+
+/**
+*\brief Prepara as condiçoes para o inicio do jogo , poe a primeira jogada e define o jogador atual e o numero de jogadas.
+*/
 
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
@@ -56,4 +87,3 @@ CASA get_casa(ESTADO *e, COORDENADA c);
 
 
 #endif
-
