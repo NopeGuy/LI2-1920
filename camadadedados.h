@@ -24,7 +24,7 @@ typedef struct {
     COORDENADA jogador1;    
     COORDENADA jogador2;
 } JOGADA;
-typedef JOGADA JOGADAS[32];
+typedef JOGADA JOGADAS[64];
 typedef struct {
     CASA tab[8][8];
     COORDENADA ultima_jogada;
