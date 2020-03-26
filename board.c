@@ -10,7 +10,6 @@ ESTADO* e;
 
 void printBoard(char board[n][n]) {
 
-    //declare variables
     int k = 1;
     int i;
     int j;
@@ -26,7 +25,7 @@ void printBoard(char board[n][n]) {
     printf("\n  ---------------------------------\n");
     for (i = 0; i < n; i++) {  //print rows lines
         printf("%c ", i + 65);
-        for (j = 0; j < n; j++) {  //print board positions
+        for (j = 0; j < n; j++) {
             printf("|");
             printf(" %c ", board[i][j]);
 
@@ -36,16 +35,16 @@ void printBoard(char board[n][n]) {
         printf("\n  ---------------------------------\n");
     }
     printf("\n");
-    if (e->num_jogadas > 0) { //depois da primeira jogada, dar print na jogada de cada jogador
+    if (e->num_jogadas > 0) {
         printf("Jogador 1:");
-        for(i=0;i < e->num_jogadas;i++){ //print jogadas
+        for(i=0;i < e->num_jogadas;i++){
             printf(" %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
-            i++; //o Loop incrementa dois de cada vez, de forma a que só dê print alternadamente
+            i++;
         }
         printf("\nJogador 2:");
         for(i=1;i < e->num_jogadas;i++){
             printf(" %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
-            i++; //o Loop incrementa dois de cada vez, de forma a que só dê print alternadamente
+            i++;
         }
         printf("\n");
 
@@ -67,10 +66,6 @@ void inicializar_board(char board[n][n]) {
     printBoard(board);
 }
 
-// Esta função verifica quando o jogo se dá por terminado, contamos 2 casos, onde o primeiro dá vitoria ao player 1 ou 2 casos.
-// estes cheguem as casas [0][7] ou [7][0].
-// consideramos no segundo caso , a hipótese de um player ficar rodeado por # , dando assim a vitória ao outro jogador.
-//  check faz com que caso seja o player 1 rodeado entao com o check a vitoria será dada ao player 2 e vice-versa.
 
 bool check_finish (char letter, char number, char board[n][n]){
     int check=1;
@@ -111,7 +106,7 @@ bool add_position(char letter, char number, char board [n][n]){
                 e->ultima_jogada.linha=letter;
                 e->ultima_jogada.coluna=number;
 
-                if (e->jogador_atual==1) { // inserir a jogada no array de structs JOGADAS[32], no seu devido indice (e->num_jogadas é usado como indice)
+                if (e->jogador_atual==1) {
                     e->jogadas[e->num_jogadas].jogador1.linha = letter;
                     e->jogadas[e->num_jogadas].jogador1.coluna = number;
                     e->jogador_atual=2; }
