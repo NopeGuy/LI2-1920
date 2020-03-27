@@ -1,0 +1,17 @@
+Relatório do guião 6
+
+
+Tal como nos foi pedido para realizar esta semana , criamos um prompt para o nosso projeto sem grandes dificuldade, tal foi explicado na devida documentação.
+Criamos também a implentação da jogada, verificar se a jogada é válida,se tal casa é vazia ou não,quando jogo acaba e etc, tal também explicado na documentação.
+Tivemos dificuldade no doxygen , não em termos de documentação , mas sim como gerir as pastas html e latex.
+Para além do disso tivemos dúvidas na parte final do guião, a introdução de mais comandos, pois  tivemos de mudar ligeiramente a estrutura do projeto, visto que não dependia tudo do estado tal como era suposto, fazendo com que o a introdução de novos comandos no interpretador se provasse mais dificil do que era suposto.
+Também o facto de o tabuleiro ser imprimido denovo mesmo depois de um jogador ter ganho.
+Quando o jogador 1 ou 2 ganhasse queriamos que desse um printf indicando o vencedor , no entanto , em vez disso, aparecia o tabuleiro novamente.Então resolvemos implantar: 
+while (!finish){
+        finish=input(board);
+        if (finish == false)
+             printBoard(board);
+        else break;
+    }
+Isto é, se a condição finish se verifica então a função printBoard para, caso contrário então a função continua normalmente.
+ 
