@@ -8,7 +8,6 @@ int main() {
     printBoard(e);
     while (1) {
         if ((bool)add_position == false) {
-            printf("Parabens, Jogador %i venceu!", e->jogador_atual%2+1);
             break;
         }
         else interpretador(e);

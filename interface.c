@@ -68,14 +68,8 @@ int interpretador(ESTADO *e) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         add_position(*col, *lin, e);
-        if ((bool) check_finish(*col, *lin, e) == true) {
-            printf("\n\n----------------------------------------\n");
-            jogadas(e);
-        }
-        else printBoard(e);
+        printBoard(e);
 
     }
-    if (fgets(linha, BUF_SIZE, stdin) == 'Q')
-        return 0;
     return 1;
 }
