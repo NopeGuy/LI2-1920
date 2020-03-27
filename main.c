@@ -7,7 +7,7 @@ int main() {
     ESTADO *e = inicializar_estado();
     printBoard(e);
     while (1) {
-        if ((bool)add_position == false) {
+        if ((int)interpretador(e) == 2) {
             break;
         }
         else interpretador(e);
