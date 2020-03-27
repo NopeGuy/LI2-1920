@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "interface.h"
 #include "camadadedados.h"
-#include <stdlib.h>
 #include <string.h>
 #include "logic.h"
 FILE *fp;
@@ -82,9 +81,11 @@ void printInFile(ESTADO *e) {
             if (j == n - 1)
                 fprintf(fp,"|");
         }
+        fprintf(fp,"\n  ---------------------------------\n");
     }
     fprintf(fp,"\n");
 }
+
 
 // Função que deve ser completada e colocada na camada de interface
 int interpretador(ESTADO *e) {
@@ -98,7 +99,7 @@ int interpretador(ESTADO *e) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         if(add_position(*col, *lin, e)== false)
-            printf("Jogada invalida bro\n");
+            printf("Jogada invalida\n");
         else {
             add_position(*col,*lin,e);
             printBoard(e);
@@ -111,7 +112,7 @@ int interpretador(ESTADO *e) {
         jogadas(e);
 
     if (strncmp(linha,"gr",2) == 0) {
-        fp = fopen("C:\\Users\\Diogo\\Desktop\\trabalhodela-Mark7\\board.txt", "w");
+        fp = fopen("\\board.txt", "w");
         printInFile(e);
         fclose(fp);
     }
