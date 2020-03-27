@@ -1,6 +1,6 @@
 #include "camadadedados.h"
 #include <stdlib.h>
-#include "board.h"
+#include "interface.h"
 
 
 ESTADO *inicializar_estado() {
@@ -13,6 +13,16 @@ ESTADO *inicializar_estado() {
     e->jogadas->jogador1.coluna = ' ';
     e->jogadas->jogador2.linha = ' ';
     e->jogadas->jogador2.coluna = ' ';
+    int i, j;
+    for(i=0;i<n;i++) {
+        for(j=0;j<n;j++) {
+            e->tab[i][j] = VAZIO;
+        }
+        e->tab[3][4] = BRANCA;
+        e->tab[0][7] = DOIS;
+        e->tab[7][0] = UM;
+
+    }
     return e;
 }
 
