@@ -68,9 +68,28 @@
 bool check_finish (char letter, char number, ESTADO *e){
     int check=1;
     if(letter-'a'==0 && number-'1'==7) {
+        if (e->jogador_atual == 1) {
+            e->jogadas[e->num_jogadas].jogador1.linha = letter;
+            e->jogadas[e->num_jogadas].jogador1.coluna = number;
+        } else {
+            e->jogadas[e->num_jogadas].jogador2.linha = letter;
+            e->jogadas[e->num_jogadas].jogador2.coluna = number;
+        }
+        e->num_jogadas++;
+        printf("\nPlayer 1 wins!");
         return true;
     }
     if(letter-'a'==7 && number-'1'==0) {
+        if (e->jogador_atual == 1) {
+            e->jogadas[e->num_jogadas].jogador1.linha = letter;
+            e->jogadas[e->num_jogadas].jogador1.coluna = number;
+        } else {
+            e->jogadas[e->num_jogadas].jogador2.linha = letter;
+            e->jogadas[e->num_jogadas].jogador2.coluna = number;
+        }
+
+        e->num_jogadas++;
+        printf("\nPlayer 2 wins!");
         return true;
     }
     for(int i=-1;i<=1;i++)
@@ -85,14 +104,16 @@ bool check_finish (char letter, char number, ESTADO *e){
         }
     }
     if (check){
+        printf("\nPlayer %i wins!", e->jogador_atual%2+1);
         return true;
+
     }
     return false;
 }
 
 bool add_position(char letter, char number, ESTADO *e){
-    if (check_finish(letter, number,e))
-        return true;
+//    if (check_finish(letter, number,e))
+//        return true;
     if (e->tab [(int)(letter-'a')][(int)(number-49)]==VAZIO) {
         if (!(abs(letter-e->ultima_jogada.linha)>1 ||abs(number-e->ultima_jogada.coluna)>1)) {
             if (letter>='a' && letter<='h' && number>='1' && number<='8') {
@@ -117,6 +138,6 @@ bool add_position(char letter, char number, ESTADO *e){
                 return false; }
             }
             }
-    }
+
     return false;
 }

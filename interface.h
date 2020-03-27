@@ -24,7 +24,6 @@ void printBoard(ESTADO *e);
  * Define tambem as casas de vitória , board [0][7] e board [7][0].
  */
 
-void inicializar_board(ESTADO *e);
 
 /** \brief  Função sobres as jogadas, funcionalidade e dados do jogo.
  * Esta função considera se uma jogada de um jogador é válida ou não e move a peça branca, caso a casa esteja vazia então a jogada é valida.

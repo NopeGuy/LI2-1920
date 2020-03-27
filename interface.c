@@ -8,6 +8,24 @@
 
 #define n 8
 
+void jogadas(ESTADO *e) {
+
+    int i;
+    if (e->num_jogadas > 0) {
+        printf("Jogador 1:");
+        for (i = 0; i < e->num_jogadas; i++) {
+            printf(" %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
+            i++;
+        }
+        printf("\nJogador 2:");
+        for (i = 1; i < e->num_jogadas; i++) {
+            printf(" %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
+            i++;
+        }
+        printf("\n");
+
+    }
+}
 
 void printBoard(ESTADO *e) {
 
@@ -36,20 +54,7 @@ void printBoard(ESTADO *e) {
         printf("\n  ---------------------------------\n");
     }
     printf("\n");
-    if (e->num_jogadas > 0) {
-        printf("Jogador 1:");
-        for (i = 0; i < e->num_jogadas; i++) {
-            printf(" %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
-            i++;
-        }
-        printf("\nJogador 2:");
-        for (i = 1; i < e->num_jogadas; i++) {
-            printf(" %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
-            i++;
-        }
-        printf("\n");
-
-    }
+    jogadas(e);
 }
 
 
@@ -58,17 +63,19 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
 
-
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         add_position(*col, *lin, e);
-        if ((bool)check_finish(*col, *lin, e) == true) {
-            printBoard(e);
-            printf("Player %d wins!", (e->jogador_atual)%2+1);}
+        if ((bool) check_finish(*col, *lin, e) == true) {
+            printf("\n\n----------------------------------------\n");
+            jogadas(e);
+        }
         else printBoard(e);
 
     }
+    if (fgets(linha, BUF_SIZE, stdin) == 'Q')
+        return 0;
     return 1;
 }
