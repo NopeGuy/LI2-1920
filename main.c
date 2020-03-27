@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include "board.h"
-#include "input.h"
+#include "interface.h"
+#include "logic.h"
 
 int main() {
-    char board[n][n];
-    int  finish=0;
     printf("\n      -----------------------\n\tWelcome to RASTROS!\n      -----------------------");
-    inicializar_board(board);
-    while (!finish){
-        finish=input(board);
-        printBoard(board);
+    ESTADO *e = inicializar_estado();
+    printBoard(e);
+    while (1) {
+        if ((bool)add_position == false) {
+            printf("Parabens, Jogador %i venceu!", e->jogador_atual%2+1);
+            break;
+        }
+        else interpretador(e);
+
     }
 
     return 0;
