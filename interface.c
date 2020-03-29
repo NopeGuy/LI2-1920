@@ -138,7 +138,7 @@ int interpretador(ESTADO *e) {
         jogadas(e);
 
     if (strncmp(linha,"ler",2) == 0) {
-        fp = fopen(".\\board.txt", "r");
+        fp = fopen("..\\board.txt", "r");
         while (fgets(linha, BUF_SIZE, fp) != NULL){
             if (counter>6 && counter%2!=0){
                 for(int i=0;i<strlen(linha);i++){
