@@ -25,6 +25,22 @@ void jogadas(ESTADO *e) {
 
 }
 
+void jogadasInFile(ESTADO *e) {
+
+    int i;
+    fprintf(fp,"Jogador 1:");
+    for (i = 0; i < e->num_jogadas; i++) {
+        fprintf(fp," %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
+        i++;
+    }
+    fprintf(fp,"\nJogador 2:");
+    for (i = 1; i < e->num_jogadas; i++) {
+        fprintf(fp," %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
+        i++;
+    }
+    fprintf(fp,"\n");
+
+}
 
 void printBoard(ESTADO *e) {
 
@@ -97,7 +113,12 @@ int interpretador(ESTADO *e) {
     char newLinha[10];
     int numpretas = 0;
 
-
+    if (strncmp(linha,"gr",2) == 0) {
+        fp = fopen("..\\board.txt", "w+");
+        printInFile(e);
+        jogadasInFile(e);
+        fclose(fp);
+    }
 
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -149,12 +170,6 @@ int interpretador(ESTADO *e) {
             counter++;
         }
         printBoard(e);
-    }
-
-    if (strncmp(linha,"gr",2) == 0) {
-        fp = fopen(".\\board.txt", "w+");
-        printInFile(e);
-        fclose(fp);
     }
 
     return 1;
