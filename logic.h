@@ -1,3 +1,10 @@
+/**
+@file logic.h
+Inicialização/configuração do tabuleiro e jogadas
+*/
+
+
+
 #ifndef RASTROSPROJECT_LOGIC_H
 #define RASTROSPROJECT_LOGIC_H
 #include "camadadedados.h"

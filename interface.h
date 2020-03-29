@@ -1,5 +1,5 @@
 /**
-@file board.h
+@file interface.h
 Inicialização/configuração do tabuleiro e jogadas
 */
 

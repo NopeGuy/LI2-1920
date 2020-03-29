@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inicializar_5festado_5',['inicializar_estado',['../camadadedados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f',1,'camadadedados.c']]]
+  ['get_5fcasa_6',['get_casa',['../camadadedados_8h.html#a20acddc30eae79368814d559cce579a9',1,'camadadedados.h']]]
 ];

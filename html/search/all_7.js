@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printboard_13',['printBoard',['../board_8h.html#a38abf2c673ca73028de1399a317ca6ac',1,'board.c']]]
+  ['printboard_13',['printBoard',['../interface_8h.html#abef6a3cea4024b440dd53791f894d859',1,'interface.c']]]
 ];
