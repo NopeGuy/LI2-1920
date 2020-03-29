@@ -22,7 +22,7 @@ typedef enum {
 typedef enum {
     UM = '1',
     DOIS = '2',
-    VAZIO = ' ',
+    VAZIO = '_',
     BRANCA = 'O',
     PRETA = '#'
 } CASA;

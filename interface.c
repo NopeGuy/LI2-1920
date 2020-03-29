@@ -92,6 +92,11 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
     char filename[100];
+    int counter=0;
+    int newCounter = 0;
+    char newLinha[10];
+    int numpretas = 0;
+
 
 
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
@@ -111,8 +116,43 @@ int interpretador(ESTADO *e) {
     if (strlen(linha) == 5 && strncmp(linha,"movs",4) == 0)
         jogadas(e);
 
+    if (strncmp(linha,"ler",2) == 0) {
+        fp = fopen(".\\board.txt", "r");
+        while (fgets(linha, BUF_SIZE, fp) != NULL){
+            if (counter>6 && counter%2!=0){
+                for(int i=0;i<strlen(linha);i++){
+                    if(i==0||i%2!=0 || linha[i]=='|')
+                        continue;
+                    else sprintf(newLinha,"%s%c",newLinha, linha[i]);
+                }
+                for(int i = 0; i< strlen(newLinha);i++){
+                    if(newLinha[i]=='_')
+                        e->tab[newCounter][i] = VAZIO;
+                    else if (newLinha[i]=='2')
+                        e->tab[newCounter][i] = DOIS;
+                    else if (newLinha[i]=='1')
+                        e->tab[newCounter][i] = UM;
+                    else if (newLinha[i]=='#') {
+                        e->tab[newCounter][i] = PRETA;
+                        numpretas++;
+                    }
+                    else if (newLinha[i]=='O') {
+                        e->tab[newCounter][i] = BRANCA;
+                        e->ultima_jogada.coluna=i+'1';
+                        e->ultima_jogada.linha=newCounter+'a';
+                        e->num_jogadas=numpretas+1;
+                    }
+                }
+                newCounter ++;
+                strcpy(newLinha,"");
+            }
+            counter++;
+        }
+        printBoard(e);
+    }
+
     if (strncmp(linha,"gr",2) == 0) {
-        fp = fopen("\\board.txt", "w");
+        fp = fopen(".\\board.txt", "w+");
         printInFile(e);
         fclose(fp);
     }

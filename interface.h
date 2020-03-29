@@ -6,6 +6,7 @@ Inicialização/configuração do tabuleiro e jogadas
 #define n 8
 #ifndef RASTROS_BOARD_H
 #define RASTROS_BOARD_H
+#include "camadadedados.h"
 
 #include <stdbool.h>
 #include "camadadedados.h"
