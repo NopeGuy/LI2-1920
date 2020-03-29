@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['board_2eh_1',['board.h',['../board_8h.html',1,'']]]
+  ['estado_3',['ESTADO',['../struct_e_s_t_a_d_o.html',1,'']]]
 ];
