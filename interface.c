@@ -13,12 +13,12 @@ void jogadas(ESTADO *e) {
     int i;
     printf("Jogador 1:");
     for (i = 0; i < e->num_jogadas; i++) {
-        printf(" %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
+        printf(" %c%c", e->jogadas[i].jogador1.coluna, e->jogadas[i].jogador1.linha);
         i++;
     }
     printf("\nJogador 2:");
     for (i = 1; i < e->num_jogadas; i++) {
-        printf(" %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
+        printf(" %c%c", e->jogadas[i].jogador2.coluna, e->jogadas[i].jogador2.linha);
         i++;
     }
     printf("\n");
@@ -30,12 +30,12 @@ void jogadasInFile(ESTADO *e) {
     int i;
     fprintf(fp,"Jogador 1:");
     for (i = 0; i < e->num_jogadas; i++) {
-        fprintf(fp," %c%c", e->jogadas[i].jogador1.linha, e->jogadas[i].jogador1.coluna);
+        fprintf(fp," %c%c", e->jogadas[i].jogador1.coluna, e->jogadas[i].jogador1.linha);
         i++;
     }
     fprintf(fp,"\nJogador 2:");
     for (i = 1; i < e->num_jogadas; i++) {
-        fprintf(fp," %c%c", e->jogadas[i].jogador2.linha, e->jogadas[i].jogador2.coluna);
+        fprintf(fp," %c%c", e->jogadas[i].jogador2.coluna, e->jogadas[i].jogador2.linha);
         i++;
     }
     fprintf(fp,"\n");
@@ -44,7 +44,7 @@ void jogadasInFile(ESTADO *e) {
 
 void printBoard(ESTADO *e) {
 
-    int k = 1;
+    int k = 0;
     int i;
     int j;
     if (e->num_jogadas > 0)
@@ -52,13 +52,13 @@ void printBoard(ESTADO *e) {
     printf("\n\nJogador atual : %d\n", e->jogador_atual);
     printf("Turno: %d\n\n", e->num_jogadas + 1);
     printf(" ");
-    while (k <= n) {
-        printf("   %d", k);
+    while (k < n) {
+        printf("   %c", k+65);
         k++;
     }
     printf("\n  ---------------------------------\n");
     for (i = 0; i < n; i++) {  //print rows lines
-        printf("%c ", i + 65);
+        printf("%d ", i+1);
         for (j = 0; j < n; j++) {
             printf("|");
             printf(" %c ", e->tab[i][j]);
@@ -81,15 +81,15 @@ void printInFile(ESTADO *e) {
     if (e->num_jogadas > 0)
         printf("\n\n----------------------------------------");
     fprintf(fp,"\n\nJogador atual : %d\n", e->jogador_atual);
-    fprintf(fp,"Turno: %d\n\n", e->num_jogadas + 1);
+    fprintf(fp,"Turno: %d\n\n", (e->num_jogadas/2 + 1));
     fprintf(fp," ");
-    while (k <= n) {
-        fprintf(fp,"   %d", k);
+    while (k < n) {
+        fprintf(fp,"   %c", k+65);
         k++;
     }
     fprintf(fp,"\n  ---------------------------------\n");
     for (i = 0; i < n; i++) {  //print rows lines
-        fprintf(fp,"%c ", i + 65);
+        fprintf(fp,"%d ", i+1);
         for (j = 0; j < n; j++) {
             fprintf(fp,"|");
             fprintf(fp," %c ", e->tab[i][j]);
@@ -107,18 +107,13 @@ void printInFile(ESTADO *e) {
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    char filename[100];
+    char filename[100]= "..\\";
     int counter=0;
     int newCounter = 0;
     char newLinha[10];
     int numpretas = 0;
-
-    if (strncmp(linha,"gr",2) == 0) {
-        fp = fopen("..\\board.txt", "w+");
-        printInFile(e);
-        jogadasInFile(e);
-        fclose(fp);
-    }
+    char dir[50];
+    char token[3];
 
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -131,14 +126,27 @@ int interpretador(ESTADO *e) {
             printBoard(e);
         }
     }
-    if (strlen(linha) == 2 && linha[0] == 'Q')
+    if (strlen(linha) == 2 && (strncmp(linha,"Q",1)==0 || strncmp(linha,"q",1)==0))  //todo
         return 2;
 
     if (strlen(linha) == 5 && strncmp(linha,"movs",4) == 0)
         jogadas(e);
 
-    if (strncmp(linha,"ler",2) == 0) {
-        fp = fopen("..\\board.txt", "r");
+    if (strncmp(linha,"gr",2) == 0 && sscanf(linha, "%s %s",token, dir)) {
+        strcat(filename, dir);
+        strcat(filename, ".txt");
+        fp = fopen(filename, "w+");
+        printInFile(e);
+        jogadasInFile(e);
+        fclose(fp);
+        printf("\nGuardado no ficheiro %s.txt :", dir);
+        printBoard(e);
+    }
+
+    if (strncmp(linha,"ler",2) == 0 && sscanf(linha, "%s %s",token, dir)) {
+        strcat(filename, dir);
+        strcat(filename, ".txt");
+        fp = fopen(filename, "r");
         while (fgets(linha, BUF_SIZE, fp) != NULL){
             if (counter>6 && counter%2!=0){
                 for(int i=0;i<strlen(linha);i++){
