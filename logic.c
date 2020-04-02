@@ -4,32 +4,15 @@
 #include "camadadedados.h"
 #include <stdio.h>
 
-bool check_finish (char letter, char number, ESTADO *e){
+int check_finish (char letter, char number, ESTADO *e){
     int check=1;
     if(letter-'a'==0 && number-'1'==7) {
-        if (e->jogador_atual == 1) {
-            e->jogadas[e->num_jogadas].jogador1.linha = letter;
-            e->jogadas[e->num_jogadas].jogador1.coluna = number;
-        } else {
-            e->jogadas[e->num_jogadas].jogador2.linha = letter;
-            e->jogadas[e->num_jogadas].jogador2.coluna = number;
-        }
         e->num_jogadas++;
-        printf("\nPlayer 1 wins!");
-        return true;
+        return 1;
     }
     if(letter-'a'==7 && number-'1'==0) {
-        if (e->jogador_atual == 1) {
-            e->jogadas[e->num_jogadas].jogador1.linha = number;
-            e->jogadas[e->num_jogadas].jogador1.coluna = letter;
-        } else {
-            e->jogadas[e->num_jogadas].jogador2.linha = number;
-            e->jogadas[e->num_jogadas].jogador2.coluna = letter;
-        }
-
         e->num_jogadas++;
-        printf("\nPlayer 2 wins!");
-        return true;
+        return 2;
     }
     for(int i=-1;i<=1;i++)
     {
@@ -37,17 +20,17 @@ bool check_finish (char letter, char number, ESTADO *e){
         {
             if((letter-'a'+i) >=0 && (number -'1'+j) >=0)
             {
-                if(e->tab[letter-'a'+i][number -'1'+j] == VAZIO)
+                if(e->tab[number -'1'+j][letter-'a'+i] == VAZIO)
                     check = 0;
             }
         }
     }
     if (check){
-        printf("Player %i win!", e->jogador_atual%2+1);
-        return true;
+
+        return 3;
 
     }
-    return false;
+    return 0;
 }
 
 bool add_position(char letter, char number, ESTADO *e){
@@ -71,9 +54,10 @@ bool add_position(char letter, char number, ESTADO *e){
                     e->jogadas[e->num_jogadas].jogador2.coluna = letter;
                 }
 
-                e->num_jogadas++;
+
                 if (check_finish(letter, number, e))
                     return true;
+                else e->num_jogadas++;
                 return true; }
         }
     }

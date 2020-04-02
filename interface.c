@@ -50,7 +50,7 @@ void printBoard(ESTADO *e) {
     if (e->num_jogadas > 0)
         printf("\n\n----------------------------------------");
     printf("\n\nJogador atual : %d\n", e->jogador_atual);
-    printf("Turno: %d\n\n", e->num_jogadas + 1);
+    printf("Turno: %d\n\n", (e->num_jogadas/2) + 1);
     printf(" ");
     while (k < n) {
         printf("   %c", k+65);
@@ -121,12 +121,17 @@ int interpretador(ESTADO *e) {
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         if(add_position(*col, *lin, e)== false)
             printf("Jogada invalida\n");
-        else {
-            add_position(*col,*lin,e);
+        else if (check_finish(*col, *lin, e) != 0) {
             printBoard(e);
-        }
+            if (check_finish(*col,*lin,e) == 1)
+                puts("Player 1 wins!");
+            if (check_finish(*col,*lin,e) == 2)
+                puts("Player 2 wins!");
+            if (check_finish(*col,*lin,e) == 3)
+                printf("\nPlayer %i wins!", e->jogador_atual%2 + 1);}
+        else printBoard(e);
     }
-    if (strlen(linha) == 2 && (strncmp(linha,"Q",1)==0 || strncmp(linha,"q",1)==0))  //todo
+    if (strlen(linha) == 2 && strncmp(linha,"Q",1)==0)  //todo
         return 2;
 
     if (strlen(linha) == 5 && strncmp(linha,"movs",4) == 0)
