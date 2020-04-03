@@ -1,0 +1,3 @@
+F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/RastrosProject.dir
+F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/rebuild_cache.dir

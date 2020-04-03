@@ -34,8 +34,6 @@ int check_finish (char letter, char number, ESTADO *e){
 }
 
 bool add_position(char letter, char number, ESTADO *e){
-//    if (check_finish(letter, number,e))
-//        return true;
     if (e->tab[(int)(number-49)][(int)(letter-'a')]==VAZIO || e->tab[(int)(number-49)][(int)(letter-'a')]==UM || e->tab[(int)(number-49)][(int)(letter-'a')]==DOIS) {
         if (!(abs(letter-(e->ultima_jogada.coluna))>1 || abs(number-(e->ultima_jogada.linha))>1)) {
             if (letter>='a' && letter<='h' && number>='1' && number<='8') {

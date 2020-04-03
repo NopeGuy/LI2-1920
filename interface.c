@@ -172,9 +172,9 @@ int interpretador(ESTADO *e) {
                     }
                     else if (newLinha[i]=='O') {
                         e->tab[newCounter][i] = BRANCA;
-                        e->ultima_jogada.coluna=i+'1';
-                        e->ultima_jogada.linha=newCounter+'a';
-                        e->num_jogadas=numpretas+1;
+                        e->ultima_jogada.coluna= i +'a';
+                        e->ultima_jogada.linha= newCounter +'1';
+                        e->num_jogadas= numpretas+1;
                     }
                 }
                 newCounter ++;

@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/Projeto LA/Mark 7 untampered/camadadedados.h
+
+F:/Projeto LA/Mark 7 untampered/interface.c
+stdio.h
+-
+interface.h
+F:/Projeto LA/Mark 7 untampered/interface.h
+camadadedados.h
+F:/Projeto LA/Mark 7 untampered/camadadedados.h
+string.h
+-
+logic.h
+F:/Projeto LA/Mark 7 untampered/logic.h
+
+F:/Projeto LA/Mark 7 untampered/interface.h
+camadadedados.h
+F:/Projeto LA/Mark 7 untampered/camadadedados.h
+stdbool.h
+-
+camadadedados.h
+F:/Projeto LA/Mark 7 untampered/camadadedados.h
+
+F:/Projeto LA/Mark 7 untampered/logic.h
+camadadedados.h
+F:/Projeto LA/Mark 7 untampered/camadadedados.h
+
