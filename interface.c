@@ -131,9 +131,11 @@ int interpretador(ESTADO *e) {
                 printf("\nPlayer %i wins!", e->jogador_atual%2 + 1);}
         else printBoard(e);
     }
-    if (strlen(linha) == 2 && strncmp(linha,"Q",1)==0)  //todo
+    if (strlen(linha) == 2 && strncmp(linha,"Q",1)==0) {
+        fflush(stdin);
+        printf("Exiting game");
         return 2;
-
+    }
     if (strlen(linha) == 5 && strncmp(linha,"movs",4) == 0)
         jogadas(e);
 
@@ -147,7 +149,6 @@ int interpretador(ESTADO *e) {
         printf("\nGuardado no ficheiro %s.txt :", dir);
         printBoard(e);
     }
-
     if (strncmp(linha,"ler",2) == 0 && sscanf(linha, "%s %s",token, dir)) {
         strcat(filename, dir);
         strcat(filename, ".txt");

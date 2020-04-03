@@ -10,8 +10,6 @@ int main() {
         if ((int)interpretador(e) == 2) {
             break;
         }
-        else interpretador(e);
-
     }
 
     return 0;
