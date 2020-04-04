@@ -27,19 +27,14 @@ void jogadas(ESTADO *e) {
 
 void jogadasInFile(ESTADO *e) {
 
-    int i;
-    fprintf(fp,"Jogador 1:");
-    for (i = 0; i < e->num_jogadas; i++) {
-        fprintf(fp," %c%c", e->jogadas[i].jogador1.coluna, e->jogadas[i].jogador1.linha);
+    int k=0;
+    int i=1;
+    while (k<e->num_jogadas) {
+        fprintf(fp,"0%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha, e->jogadas[k+1].jogador2.coluna, e->jogadas[k+1].jogador2.linha);
+        k+=2;
         i++;
     }
-    fprintf(fp,"\nJogador 2:");
-    for (i = 1; i < e->num_jogadas; i++) {
-        fprintf(fp," %c%c", e->jogadas[i].jogador2.coluna, e->jogadas[i].jogador2.linha);
-        i++;
-    }
-    fprintf(fp,"\n");
-
+    fprintf(fp, "\n");
 }
 
 void printBoard(ESTADO *e) {
