@@ -8,6 +8,7 @@ FILE *fp;
 
 #define n 8
 
+
 void jogadas(ESTADO *e) {
 
     int i;
@@ -97,8 +98,40 @@ void printInFile(ESTADO *e) {
     fprintf(fp,"\n");
 }
 
+void position(ESTADO *e, int valor) {
+    e->num_jogadas = valor * 2;
+    e->ultima_jogada.coluna = e->jogadas[e->num_jogadas-1].jogador2.coluna;
+    e->ultima_jogada.linha = e->jogadas[e->num_jogadas-1].jogador2.linha;
+    for (int i=(valor * 2);i < 64;i++) {
+        e->jogadas[i].jogador1.linha = ' ';
+        e->jogadas[i].jogador1.coluna = ' ';
+        e->jogadas[i + 1].jogador2.linha = ' ';
+        e->jogadas[i + 1].jogador2.coluna = ' ';
+        i++;
+    }
+
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<n;j++) {
+            e->tab[i][j] = VAZIO;
+        }
+        e->tab[3][4] = PRETA;
+        e->tab[0][7] = DOIS;
+        e->tab[7][0] = UM;
+
+    }
+    for (int i=0 ; i < (valor * 2) - 1;i++) {
+        e->tab[(int)e->jogadas[i].jogador1.linha - 49][(int)e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
+        e->tab[(int)e->jogadas[i+1].jogador2.linha - 49][(int)e->jogadas[i+1].jogador2.coluna - 'a'] = PRETA;
+    }
+    e->tab[(e->ultima_jogada.linha - 49)][(int) (e->ultima_jogada.coluna - 'a')] = BRANCA;
+    e->jogador_atual = 1;
+    printBoard(e);
+
+}
 
 // Função que deve ser completada e colocada na camada de interface
+
+
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
@@ -109,6 +142,7 @@ int interpretador(ESTADO *e) {
     int numpretas = 0;
     char dir[50];
     char token[3];
+    int valor;
 
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -144,7 +178,7 @@ int interpretador(ESTADO *e) {
         printf("\nGuardado no ficheiro %s.txt :", dir);
         printBoard(e);
     }
-    if (strncmp(linha,"ler",2) == 0 && sscanf(linha, "%s %s",token, dir)) {
+    if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
@@ -181,5 +215,11 @@ int interpretador(ESTADO *e) {
         printBoard(e);
     }
 
+    if (strncmp(linha,"pos",3) == 0 && sscanf(linha, "%s %d",token, &valor)) {
+        if (valor >= e->num_jogadas) {
+            printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
+        }
+        else position(e, valor);
+    }
     return 1;
 }
