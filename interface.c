@@ -79,8 +79,8 @@ void printInFile(ESTADO *e) {
     fprintf(fp,"\n\nJogador atual : %d\n", e->jogador_atual);
     fprintf(fp,"Turno: %d\n\n", (e->num_jogadas/2 + 1));
     fprintf(fp," ");
-    while (k < n) {
-        fprintf(fp,"   %c", k+65);
+    while (k <= n) {
+        fprintf(fp,"   %c", k+64);
         k++;
     }
     fprintf(fp,"\n  ---------------------------------\n");
@@ -135,8 +135,8 @@ void position(ESTADO *e, int valor) {
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    char filename[100]= "..\\";
-    int counter=0;
+    char filename[100] = "..\\";
+    int counter = 0;
     int newCounter = 0;
     char newLinha[10];
     int numpretas = 0;
@@ -144,31 +144,31 @@ int interpretador(ESTADO *e) {
     char token[3];
     int valor;
 
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
+    if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
 
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-        if(add_position(*col, *lin, e)== false)
+    if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+        if (add_position(*col, *lin, e) == false)
             printf("Jogada invalida\n");
         else if (check_finish(*col, *lin, e) != 0) {
             printBoard(e);
-            if (check_finish(*col,*lin,e) == 1)
+            if (check_finish(*col, *lin, e) == 1)
                 puts("Player 1 wins!");
-            if (check_finish(*col,*lin,e) == 2)
+            if (check_finish(*col, *lin, e) == 2)
                 puts("Player 2 wins!");
-            if (check_finish(*col,*lin,e) == 3)
-                printf("\nPlayer %i wins!", e->jogador_atual%2 + 1);}
-        else printBoard(e);
+            if (check_finish(*col, *lin, e) == 3)
+                printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
+        } else printBoard(e);
     }
-    if (strlen(linha) == 2 && strncmp(linha,"Q",1)==0) {
+    if (strlen(linha) == 2 && strncmp(linha, "Q", 1) == 0) {
         fflush(stdin);
         printf("Exiting game");
         return 2;
     }
-    if (strlen(linha) == 5 && strncmp(linha,"movs",4) == 0)
+    if (strlen(linha) == 5 && strncmp(linha, "movs", 4) == 0)
         jogadas(e);
 
-    if (strncmp(linha,"gr",2) == 0 && sscanf(linha, "%s %s",token, dir)) {
+    if (strncmp(linha, "gr", 2) == 0 && sscanf(linha, "%s %s", token, dir)) {
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "w+");
@@ -178,48 +178,57 @@ int interpretador(ESTADO *e) {
         printf("\nGuardado no ficheiro %s.txt :", dir);
         printBoard(e);
     }
-    if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
+    if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
-        while (fgets(linha, BUF_SIZE, fp) != NULL){
-            if (counter>6 && counter%2!=0){
-                for(int i=0;i<strlen(linha);i++){
-                    if(i==0||i%2!=0 || linha[i]=='|')
+        while (fgets(linha, BUF_SIZE, fp) != NULL) {
+            if (counter > 6 && counter % 2 != 0) {
+                for (int i = 0; i < strlen(linha); i++) {
+                    if (i == 0 || i % 2 != 0 || linha[i] == '|')
                         continue;
-                    else sprintf(newLinha,"%s%c",newLinha, linha[i]);
+                    else sprintf(newLinha, "%s%c", newLinha, linha[i]);
                 }
-                for(int i = 0; i< strlen(newLinha);i++){
-                    if(newLinha[i]=='_')
+                for (int i = 0; i < strlen(newLinha); i++) {
+                    if (newLinha[i] == '_')
                         e->tab[newCounter][i] = VAZIO;
-                    else if (newLinha[i]=='2')
+                    else if (newLinha[i] == '2')
                         e->tab[newCounter][i] = DOIS;
-                    else if (newLinha[i]=='1')
+                    else if (newLinha[i] == '1')
                         e->tab[newCounter][i] = UM;
-                    else if (newLinha[i]=='#') {
+                    else if (newLinha[i] == '#') {
                         e->tab[newCounter][i] = PRETA;
                         numpretas++;
-                    }
-                    else if (newLinha[i]=='O') {
+                    } else if (newLinha[i] == 'O') {
                         e->tab[newCounter][i] = BRANCA;
-                        e->ultima_jogada.coluna= i +'a';
-                        e->ultima_jogada.linha= newCounter +'1';
-                        e->num_jogadas= numpretas+1;
+                        e->ultima_jogada.coluna = i + 'a';
+                        e->ultima_jogada.linha = newCounter + '1';
+                        e->num_jogadas = numpretas + 1;
                     }
                 }
-                newCounter ++;
-                strcpy(newLinha,"");
+                newCounter++;
+                strcpy(newLinha, "");
             }
             counter++;
         }
-        printBoard(e);
-    }
-
-    if (strncmp(linha,"pos",3) == 0 && sscanf(linha, "%s %d",token, &valor)) {
-        if (valor >= e->num_jogadas) {
-            printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
+        while (fgets(linha, BUF_SIZE, fp) != NULL) {
+            if (counter > 23) {
+                for (int i = 0; i < strlen(linha); i++) {
+                    if (linha[i] == ':') {
+                        position(linha[i + 2], linha[i + 3]); //sendo position aonde guarda a posiçao
+                        if (strlen(linha) > 6 && strlen(linha) < 10)
+                            position(linha[i + 5], linha[i + 6]); //sendo position aonde guarda a posiçao
+                    }
+                }
+            }
         }
-        else position(e, valor);
+        printBoard(e);
+
+        if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
+            if (valor >= e->num_jogadas) {
+                printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
+            } else position(e, valor);
+        }
+        return 1;
     }
-    return 1;
 }
