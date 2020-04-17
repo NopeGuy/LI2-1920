@@ -68,34 +68,22 @@ void printBoard(ESTADO *e) {
     jogadas(e);
 }
 
-
 void printInFile(ESTADO *e) {
-
-    int k = 1;
-    int i;
-    int j;
-    if (e->num_jogadas > 0)
-        printf("\n\n----------------------------------------");
-    fprintf(fp,"\n\nJogador atual : %d\n", e->jogador_atual);
-    fprintf(fp,"Turno: %d\n\n", (e->num_jogadas/2 + 1));
-    fprintf(fp," ");
-    while (k <= n) {
-        fprintf(fp,"   %c", k+64);
-        k++;
-    }
-    fprintf(fp,"\n  ---------------------------------\n");
-    for (i = 0; i < n; i++) {  //print rows lines
-        fprintf(fp,"%d ", i+1);
-        for (j = 0; j < n; j++) {
-            fprintf(fp,"|");
-            fprintf(fp," %c ", e->tab[i][j]);
-
-            if (j == n - 1)
-                fprintf(fp,"|");
+    for (int i = 0; i < n; i++) {  //print rows lines
+        for (int j = 0; j < n; j++) {
+            if (e->tab[i][j] == VAZIO)
+                fprintf(fp, ". ");
+            else if (e->tab[i][j] == PRETA)
+                fprintf(fp, "# ");
+            else if (e->tab[i][j] == UM)
+                fprintf(fp, "1 ");
+            else if (e->tab[i][j] == DOIS)
+                fprintf(fp, "2 ");
+            else fprintf(fp, "* ");
         }
-        fprintf(fp,"\n  ---------------------------------\n");
+        fprintf(fp, "\n");
     }
-    fprintf(fp,"\n");
+    fprintf(fp, "\n");
 }
 
 void position(ESTADO *e, int valor) {
@@ -178,39 +166,42 @@ int interpretador(ESTADO *e) {
         printf("\nGuardado no ficheiro %s.txt :", dir);
         printBoard(e);
     }
-    if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
+    if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
-        while (fgets(linha, BUF_SIZE, fp) != NULL) {
-            if (counter > 6 && counter % 2 != 0) {
-                for (int i = 0; i < strlen(linha); i++) {
-                    if (i == 0 || i % 2 != 0 || linha[i] == '|')
+        while (fgets(linha, BUF_SIZE, fp) != NULL){
+            if (linha[0] == '.') {
+                for(int i=0;i<strlen(linha);i++){
+                    if(linha[i]==' ')
                         continue;
-                    else sprintf(newLinha, "%s%c", newLinha, linha[i]);
+                    else sprintf(newLinha,"%s%c",newLinha, linha[i]);
                 }
-                for (int i = 0; i < strlen(newLinha); i++) {
-                    if (newLinha[i] == '_')
+                for(int i = 0; i< strlen(newLinha);i++){
+                    if(newLinha[i]=='.')
                         e->tab[newCounter][i] = VAZIO;
-                    else if (newLinha[i] == '2')
+                    else if (newLinha[i]=='2')
                         e->tab[newCounter][i] = DOIS;
-                    else if (newLinha[i] == '1')
+                    else if (newLinha[i]=='1')
                         e->tab[newCounter][i] = UM;
-                    else if (newLinha[i] == '#') {
+                    else if (newLinha[i]=='#') {
                         e->tab[newCounter][i] = PRETA;
                         numpretas++;
-                    } else if (newLinha[i] == 'O') {
+                    }
+                    else if (newLinha[i]=='*') {
                         e->tab[newCounter][i] = BRANCA;
-                        e->ultima_jogada.coluna = i + 'a';
-                        e->ultima_jogada.linha = newCounter + '1';
-                        e->num_jogadas = numpretas + 1;
+                        e->ultima_jogada.coluna= i +'a';
+                        e->ultima_jogada.linha= newCounter +'1';
+                        e->num_jogadas= numpretas+1;
                     }
                 }
-                newCounter++;
-                strcpy(newLinha, "");
+                newCounter ++;
+                strcpy(newLinha,"");
             }
             counter++;
         }
+        printBoard(e);
+    }
         while (fgets(linha, BUF_SIZE, fp) != NULL) {
             if (counter > 23) {
                 for (int i = 0; i < strlen(linha); i++) {
@@ -230,5 +221,4 @@ int interpretador(ESTADO *e) {
             } else position(e, valor);
         }
         return 1;
-    }
 }
