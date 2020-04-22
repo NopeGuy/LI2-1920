@@ -129,14 +129,9 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
     char filename[100] = "..\\";
-    int counter = 0;
-    int newCounter = 0;
-    char newLinha[10];
-    int numpretas = 0;
     char dir[50];
     char token[3];
     int valor;
-    int teste = 0;
 
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -226,8 +221,15 @@ int interpretador(ESTADO *e) {
             while (broC[num] == ' ')
                 num = (rand() % k);
             add_position(broC[num], broL[num], e);
-            printBoard(e);
-
+            if (check_finish(broC[num], broL[num], e) != 0) {
+                printBoard(e);
+                if (check_finish(broC[num], broL[num], e) == 1)
+                    puts("Player 1 wins!");
+                if (check_finish(broC[num], broL[num], e) == 2)
+                    puts("Player 2 wins!");
+                if (check_finish(broC[num], broL[num], e) == 3)
+                    printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
+            } else printBoard(e);
             for (int i = 0; i<10;i++) {
                 broC[i] = ' ';
                 broL[i] = ' ';
