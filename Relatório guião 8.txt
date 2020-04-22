@@ -1,4 +1,4 @@
-Relatório guião 8
+Relatório do guião 8
 
 A introdução ao comando pos deu trabalho, pois a nossa ideia inicial era varrer todas as posições e adicionar apenas as jogadas necessárias com um loop.
 No entanto rapidamente mudamos de ideia , uma vez que percebemos que essa estratégia não era otimizada. A ideia que acabamos por introduzir no código foi definir o número de jogadas,varrer todas as casas até esse número e a partir dai continuar a board.
