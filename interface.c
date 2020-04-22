@@ -4,6 +4,9 @@
 #include <string.h>
 #include "logic.h"
 FILE *fp;
+
+int rand();
+
 #define BUF_SIZE 1024
 
 #define n 8
@@ -31,7 +34,9 @@ void jogadasInFile(ESTADO *e) {
     int k=0;
     int i=1;
     while (k<e->num_jogadas) {
-        fprintf(fp,"0%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha, e->jogadas[k+1].jogador2.coluna, e->jogadas[k+1].jogador2.linha);
+        fprintf(fp,"0%d: %c%c ", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha);
+        if (e->num_jogadas%2 != 0 && k != e->num_jogadas - 1)
+            fprintf(fp,"%c%c\n", e->jogadas[k+1].jogador2.coluna, e->jogadas[k+1].jogador2.linha);
         k+=2;
         i++;
     }
@@ -131,6 +136,7 @@ int interpretador(ESTADO *e) {
     char dir[50];
     char token[3];
     int valor;
+    int teste = 0;
 
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
@@ -166,59 +172,67 @@ int interpretador(ESTADO *e) {
         printf("\nGuardado no ficheiro %s.txt :", dir);
         printBoard(e);
     }
+
     if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
+        char check[5] = "01:";
+        int find_pos = 0;
+        int line_num = 1;
+
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
-        while (fgets(linha, BUF_SIZE, fp) != NULL){
-            if (linha[0] == '.') {
-                for(int i=0;i<strlen(linha);i++){
-                    if(linha[i]==' ')
-                        continue;
-                    else sprintf(newLinha,"%s%c",newLinha, linha[i]);
-                }
-                for(int i = 0; i< strlen(newLinha);i++){
-                    if(newLinha[i]=='.')
-                        e->tab[newCounter][i] = VAZIO;
-                    else if (newLinha[i]=='2')
-                        e->tab[newCounter][i] = DOIS;
-                    else if (newLinha[i]=='1')
-                        e->tab[newCounter][i] = UM;
-                    else if (newLinha[i]=='#') {
-                        e->tab[newCounter][i] = PRETA;
-                        numpretas++;
-                    }
-                    else if (newLinha[i]=='*') {
-                        e->tab[newCounter][i] = BRANCA;
-                        e->ultima_jogada.coluna= i +'a';
-                        e->ultima_jogada.linha= newCounter +'1';
-                        e->num_jogadas= numpretas+1;
-                    }
-                }
-                newCounter ++;
-                strcpy(newLinha,"");
+        while (fgets(linha, BUF_SIZE, fp) != NULL) {
+            if (strstr(linha, check) != NULL) {
+                find_pos++;
             }
-            counter++;
+            line_num++;
+            if (find_pos != 0) {
+                printf("%s", linha);
+                add_position(linha[4], linha[5], e);
+                add_position(linha[7], linha[8],e);
+            }
         }
         printBoard(e);
     }
-        while (fgets(linha, BUF_SIZE, fp) != NULL) {
-            if (counter > 23) {
-                for (int i = 0; i < strlen(linha); i++) {
-                    if (linha[i] == ':') {
-                        position(linha[i + 2], linha[i + 3]); //sendo position aonde guarda a posiçao
-                        if (strlen(linha) > 6 && strlen(linha) < 10)
-                            position(linha[i + 5], linha[i + 6]); //sendo position aonde guarda a posiçao
-                    }
-                }
-            }
-        }
-        printBoard(e);
 
-        if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
+    if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
             if (valor >= e->num_jogadas) {
                 printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
             } else position(e, valor);
         }
-        return 1;
+
+    if (strncmp(linha,"jog",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
+        if (strlen(linha) == 4 && strncmp(linha,"jog", 3) == 0) {
+            char broC[10];
+            char broL[10];
+            int k = 0;
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if (e->ultima_jogada.coluna + i >= 'a' && e->ultima_jogada.coluna + i <= 'h' &&
+                        e->ultima_jogada.linha + j >= '1' && e->ultima_jogada.linha + j <= '8') {
+                        if ((e->ultima_jogada.coluna - 'a' + i) >= 0 && (e->ultima_jogada.linha - '1' + j) >= 0) {
+                            if (e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == VAZIO
+                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == UM
+                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == DOIS) {
+                                broC[k] = e->ultima_jogada.coluna + i;
+                                broL[k] = e->ultima_jogada.linha + j;
+                                k++;
+                            }
+                        }
+                    }
+                }
+            }
+            int num = (rand() % k + 1);
+            while (broC[num] == ' ')
+                num = (rand() % k);
+            add_position(broC[num], broL[num], e);
+            printBoard(e);
+
+            for (int i = 0; i<10;i++) {
+                broC[i] = ' ';
+                broL[i] = ' ';
+            }
+        }
+    }
+    return 1;
 }

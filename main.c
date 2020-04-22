@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "interface.h"
 #include "logic.h"
+#include "lista.h"
+#define BUF_SIZE 1024
+
 
 int main() {
     printf("\n      -----------------------\n\tWelcome to RASTROS!\n      -----------------------");
@@ -11,7 +14,6 @@ int main() {
             break;
         }
     }
-
     return 0;
 }
 

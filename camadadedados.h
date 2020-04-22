@@ -86,4 +86,5 @@ void set_casa(ESTADO *e, COORDENADA c, CASA V);
 CASA get_casa(ESTADO *e, COORDENADA c);
 
 
+
 #endif

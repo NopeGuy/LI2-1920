@@ -41,7 +41,6 @@ bool add_position(char letter, char number, ESTADO *e){
                 e->tab[(int) (number - 49)][(int) (letter - 'a')] = BRANCA;
                 e->ultima_jogada.linha = number;
                 e->ultima_jogada.coluna = letter;
-
                 if (e->jogador_atual == 1) {
                     e->jogadas[e->num_jogadas].jogador1.linha = number;
                     e->jogadas[e->num_jogadas].jogador1.coluna = letter;
