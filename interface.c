@@ -168,7 +168,7 @@ int interpretador(ESTADO *e) {
         printBoard(e);
     }
 
-    if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
+    if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
         char check[5] = "01:";
         int find_pos = 0;
         int line_num = 1;
@@ -184,57 +184,56 @@ int interpretador(ESTADO *e) {
             if (find_pos != 0) {
                 printf("%s", linha);
                 add_position(linha[4], linha[5], e);
-                add_position(linha[7], linha[8],e);
+                add_position(linha[7], linha[8], e);
             }
         }
         printBoard(e);
     }
 
     if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
-            if (valor >= e->num_jogadas) {
-                printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
-            } else position(e, valor);
-        }
+        if (valor >= e->num_jogadas) {
+            printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
+        } else position(e, valor);
+    }
 
-    if (strncmp(linha,"jog",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
-        if (strlen(linha) == 4 && strncmp(linha,"jog", 3) == 0) {
-            char broC[10];
-            char broL[10];
-            int k = 0;
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    if (e->ultima_jogada.coluna + i >= 'a' && e->ultima_jogada.coluna + i <= 'h' &&
-                        e->ultima_jogada.linha + j >= '1' && e->ultima_jogada.linha + j <= '8') {
-                        if ((e->ultima_jogada.coluna - 'a' + i) >= 0 && (e->ultima_jogada.linha - '1' + j) >= 0) {
-                            if (e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == VAZIO
-                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == UM
-                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == DOIS) {
-                                broC[k] = e->ultima_jogada.coluna + i;
-                                broL[k] = e->ultima_jogada.linha + j;
-                                k++;
-                            }
+
+    if (strlen(linha) == 4 && strncmp(linha, "jog", 3) == 0) {
+        char broC[10];
+        char broL[10];
+        int k = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (e->ultima_jogada.coluna + i >= 'a' && e->ultima_jogada.coluna + i <= 'h' &&
+                    e->ultima_jogada.linha + j >= '1' && e->ultima_jogada.linha + j <= '8') {
+                    if ((e->ultima_jogada.coluna - 'a' + i) >= 0 && (e->ultima_jogada.linha - '1' + j) >= 0) {
+                        if (e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == VAZIO
+                            || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == UM
+                            || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == DOIS) {
+                            broC[k] = e->ultima_jogada.coluna + i;
+                            broL[k] = e->ultima_jogada.linha + j;
+                            k++;
                         }
                     }
                 }
             }
-            int num = (rand() % k + 1);
-            while (broC[num] == ' ')
-                num = (rand() % k);
-            add_position(broC[num], broL[num], e);
-            if (check_finish(broC[num], broL[num], e) != 0) {
-                printBoard(e);
-                if (check_finish(broC[num], broL[num], e) == 1)
-                    puts("Player 1 wins!");
-                if (check_finish(broC[num], broL[num], e) == 2)
-                    puts("Player 2 wins!");
-                if (check_finish(broC[num], broL[num], e) == 3)
-                    printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
-            } else printBoard(e);
-            for (int i = 0; i<10;i++) {
-                broC[i] = ' ';
-                broL[i] = ' ';
-            }
+        }
+        int num = (rand() % k);
+        while (broC[num] == ' ')
+            num = (rand() % k);
+        if (add_position(broC[num], broL[num], e) == false)
+            printf("Jogada invalida\n");
+        else if (check_finish(broC[num], broL[num], e) != 0) {
+            printBoard(e);
+            if (check_finish(broC[num], broL[num], e) == 1)
+                puts("Player 1 wins!");
+            if (check_finish(broC[num], broL[num], e) == 2)
+                puts("Player 2 wins!");
+            if (check_finish(broC[num], broL[num], e) == 3)
+                printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
+        } else printBoard(e);
+        for (int i = 0; i < 10; i++) {
+            broC[i] = ' ';
+            broL[i] = ' ';
         }
     }
-    return 1;
 }
