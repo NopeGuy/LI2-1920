@@ -50,14 +50,11 @@ bool add_position(char letter, char number, ESTADO *e){
                     e->jogadas[e->num_jogadas].jogador2.linha = number;
                     e->jogadas[e->num_jogadas].jogador2.coluna = letter;
                 }
-
-
                 if (check_finish(letter, number, e))
                     return true;
                 else e->num_jogadas++;
                 return true; }
         }
     }
-
     return false;
 }
