@@ -3,9 +3,9 @@
 #include "camadadedados.h"
 #include <string.h>
 #include "logic.h"
+#include "lista.h"
+#include <stdlib.h>
 FILE *fp;
-
-int rand();
 
 #define BUF_SIZE 1024
 
@@ -95,6 +95,7 @@ void position(ESTADO *e, int valor) {
     e->num_jogadas = valor * 2;
     e->ultima_jogada.coluna = e->jogadas[e->num_jogadas-1].jogador2.coluna;
     e->ultima_jogada.linha = e->jogadas[e->num_jogadas-1].jogador2.linha;
+
     for (int i=(valor * 2);i < 64;i++) {
         e->jogadas[i].jogador1.linha = ' ';
         e->jogadas[i].jogador1.coluna = ' ';
@@ -112,6 +113,7 @@ void position(ESTADO *e, int valor) {
         e->tab[7][0] = UM;
 
     }
+
     for (int i=0 ; i < (valor * 2) - 1;i++) {
         e->tab[(int)e->jogadas[i].jogador1.linha - 49][(int)e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
         e->tab[(int)e->jogadas[i+1].jogador2.linha - 49][(int)e->jogadas[i+1].jogador2.coluna - 'a'] = PRETA;
@@ -122,24 +124,19 @@ void position(ESTADO *e, int valor) {
 
 }
 
-// Função que deve ser completada e colocada na camada de interface
-
 
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
     char filename[100] = "..\\";
-    int counter = 0;
-    int newCounter = 0;
-    char newLinha[10];
-    int numpretas = 0;
     char dir[50];
     char token[3];
     int valor;
-    int teste = 0;
+
 
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
+
 
     if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         if (add_position(*col, *lin, e) == false)
@@ -154,13 +151,18 @@ int interpretador(ESTADO *e) {
                 printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
         } else printBoard(e);
     }
+
+
     if (strlen(linha) == 2 && strncmp(linha, "Q", 1) == 0) {
         fflush(stdin);
         printf("Exiting game");
         return 2;
     }
+
+
     if (strlen(linha) == 5 && strncmp(linha, "movs", 4) == 0)
         jogadas(e);
+
 
     if (strncmp(linha, "gr", 2) == 0 && sscanf(linha, "%s %s", token, dir)) {
         strcat(filename, dir);
@@ -173,7 +175,8 @@ int interpretador(ESTADO *e) {
         printBoard(e);
     }
 
-    if (strncmp(linha,"ler",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
+
+    if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
         char check[5] = "01:";
         int find_pos = 0;
         int line_num = 1;
@@ -189,50 +192,81 @@ int interpretador(ESTADO *e) {
             if (find_pos != 0) {
                 printf("%s", linha);
                 add_position(linha[4], linha[5], e);
-                add_position(linha[7], linha[8],e);
+                add_position(linha[7], linha[8], e);
             }
         }
         printBoard(e);
     }
 
-    if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
-            if (valor >= e->num_jogadas) {
-                printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
-            } else position(e, valor);
-        }
 
-    if (strncmp(linha,"jog",3) == 0 && sscanf(linha, "%s %s",token, dir)) {
-        if (strlen(linha) == 4 && strncmp(linha,"jog", 3) == 0) {
-            char broC[10];
-            char broL[10];
-            int k = 0;
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    if (e->ultima_jogada.coluna + i >= 'a' && e->ultima_jogada.coluna + i <= 'h' &&
-                        e->ultima_jogada.linha + j >= '1' && e->ultima_jogada.linha + j <= '8') {
-                        if ((e->ultima_jogada.coluna - 'a' + i) >= 0 && (e->ultima_jogada.linha - '1' + j) >= 0) {
-                            if (e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == VAZIO
-                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == UM
-                                || e->tab[e->ultima_jogada.linha - '1' + j][e->ultima_jogada.coluna - 'a' + i] == DOIS) {
-                                broC[k] = e->ultima_jogada.coluna + i;
-                                broL[k] = e->ultima_jogada.linha + j;
-                                k++;
-                            }
+    if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
+        if (valor >= e->num_jogadas) {
+            printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
+        } else position(e, valor);
+    }
+
+
+    if (strlen(linha) == 4 && strncmp(linha, "jog", 3) == 0) {
+        int k=0;
+        int counter=0;
+        LISTA posicoes = criar_lista();
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
+                    if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
+                        if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO ||
+                        e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == UM ||
+                        e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == DOIS ) {
+                            char *auxiliar = malloc(sizeof(char)*5);
+                            sprintf(auxiliar,"%c%c",e->ultima_jogada.coluna + j , e->ultima_jogada.linha + i);
+                            posicoes=insere_cabeca(posicoes, auxiliar);
+                            k++;
                         }
                     }
                 }
             }
-            int num = (rand() % k + 1);
-            while (broC[num] == ' ')
-                num = (rand() % k);
-            add_position(broC[num], broL[num], e);
-            printBoard(e);
+        }
+        int choice=rand()%k;
+        char*escolha=devolve_cabeca(posicoes);
+        while(counter != choice){
+            counter++;
+            posicoes=remove_cabeca(posicoes);
+            escolha = devolve_cabeca(posicoes);
+        }
+        add_position(escolha[0],escolha[1],e);
+        if (check_finish(escolha[0], escolha[1], e) != 0) {
+            if (check_finish(escolha[0], escolha[1], e) == 1)
+                puts("Player 1 wins!");
+            if (check_finish(escolha[0], escolha[1], e) == 2)
+                puts("Player 2 wins!");
+            if (check_finish(escolha[0], escolha[1], e) == 3)
+                printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
+        }printBoard(e);
+    }
 
-            for (int i = 0; i<10;i++) {
-                broC[i] = ' ';
-                broL[i] = ' ';
+
+    if (strlen(linha) == 4 && strncmp(linha, "jog2", 3) == 0) {
+        int k=0;
+        LISTA posicoes = criar_lista();
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
+                    if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
+                        if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO ||
+                            e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == UM ||
+                            e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == DOIS ) {
+                            char *auxiliar = malloc(sizeof(char)*5);
+                            sprintf(auxiliar,"%c%c",e->ultima_jogada.coluna + j , e->ultima_jogada.linha + i);
+                            posicoes=insere_cabeca(posicoes, auxiliar);
+                            k++;
+                        }
+                    }
+                }
             }
         }
+        while(!lista_esta_vazia(posicoes)){
+            posicoes=remove_cabeca(posicoes);
+        }
     }
-    return 1;
 }
+

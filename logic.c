@@ -20,7 +20,9 @@ int check_finish (char letter, char number, ESTADO *e){
         {
             if((letter-'a'+i) >=0 && (number -'1'+j) >=0)
             {
-                if(e->tab[number -'1'+j][letter-'a'+i] == VAZIO)
+                if(e->tab[number -'1'+j][letter-'a'+i] == VAZIO ||
+                e->tab[number -'1'+j][letter-'a'+i] == UM ||
+                e->tab[number -'1'+j][letter-'a'+i] == DOIS)
                     check = 0;
             }
         }
@@ -32,6 +34,7 @@ int check_finish (char letter, char number, ESTADO *e){
     }
     return 0;
 }
+
 
 bool add_position(char letter, char number, ESTADO *e){
     if (e->tab[(int)(number-49)][(int)(letter-'a')]==VAZIO || e->tab[(int)(number-49)][(int)(letter-'a')]==UM || e->tab[(int)(number-49)][(int)(letter-'a')]==DOIS) {

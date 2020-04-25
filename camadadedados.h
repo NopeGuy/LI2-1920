@@ -76,7 +76,9 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 @param c A coordenada
 @param V O novo valor para a casa
 */
+
 void set_casa(ESTADO *e, COORDENADA c, CASA V);
+
 /**
 \brief Devolve o valor de uma casa
 @param e Apontador para o estado

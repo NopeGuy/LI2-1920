@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "interface.h"
 #include "logic.h"
 #include "lista.h"
@@ -6,6 +8,7 @@
 
 
 int main() {
+    srand(time(NULL));
     printf("\n      -----------------------\n\tWelcome to RASTROS!\n      -----------------------");
     ESTADO *e = inicializar_estado();
     printBoard(e);

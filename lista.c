@@ -11,6 +11,7 @@ LISTA criar_lista(){
     return x;
 }
 
+
 LISTA insere_cabeca(LISTA L, void *valor) {
     if(L->cabeca == NULL) {
         L->cabeca = valor;
@@ -24,18 +25,28 @@ LISTA insere_cabeca(LISTA L, void *valor) {
     }
 }
 
+
 void *devolve_cabeca(LISTA L) {
     return L->cabeca;
 }
+
 
 LISTA proximo(LISTA L) {
     return L->proximo;
 }
 
+
 LISTA remove_cabeca(LISTA L) {
-    LISTA x = L->proximo;
-    return x;
+    if (L->proximo != NULL) {
+        LISTA x = L->proximo;
+        return x;
+    }
+    else{
+        L->cabeca = NULL;
+        return  L;
+    }
 }
+
 
 int lista_esta_vazia(LISTA L){
     if(L->cabeca == NULL && L->proximo == NULL) {
