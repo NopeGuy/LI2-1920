@@ -14,8 +14,8 @@ ESTADO *inicializar_estado() {
     e->jogadas->jogador2.linha = ' ';
     e->jogadas->jogador2.coluna = ' ';
     int i, j;
-    for(i=0;i<n;i++) {
-        for(j=0;j<n;j++) {
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
             e->tab[i][j] = VAZIO;
         }
         e->tab[3][4] = BRANCA;

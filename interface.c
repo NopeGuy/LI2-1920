@@ -5,6 +5,7 @@
 #include "logic.h"
 #include "lista.h"
 #include <stdlib.h>
+
 FILE *fp;
 
 #define BUF_SIZE 1024
@@ -31,13 +32,13 @@ void jogadas(ESTADO *e) {
 
 void jogadasInFile(ESTADO *e) {
 
-    int k=0;
-    int i=1;
-    while (k<e->num_jogadas) {
-        fprintf(fp,"0%d: %c%c ", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha);
-        if (e->num_jogadas%2 != 0 && k != e->num_jogadas - 1)
-            fprintf(fp,"%c%c\n", e->jogadas[k+1].jogador2.coluna, e->jogadas[k+1].jogador2.linha);
-        k+=2;
+    int k = 0;
+    int i = 1;
+    while (k < e->num_jogadas) {
+        fprintf(fp, "0%d: %c%c ", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha);
+        if (e->num_jogadas % 2 != 0 && k != e->num_jogadas - 1)
+            fprintf(fp, "%c%c\n", e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
+        k += 2;
         i++;
     }
     fprintf(fp, "\n");
@@ -51,15 +52,15 @@ void printBoard(ESTADO *e) {
     if (e->num_jogadas > 0)
         printf("\n\n----------------------------------------");
     printf("\n\nJogador atual : %d\n", e->jogador_atual);
-    printf("Turno: %d\n\n", (e->num_jogadas/2) + 1);
+    printf("Turno: %d\n\n", (e->num_jogadas / 2) + 1);
     printf(" ");
     while (k < n) {
-        printf("   %c", k+65);
+        printf("   %c", k + 65);
         k++;
     }
     printf("\n  ---------------------------------\n");
     for (i = 0; i < n; i++) {  //print rows lines
-        printf("%d ", i+1);
+        printf("%d ", i + 1);
         for (j = 0; j < n; j++) {
             printf("|");
             printf(" %c ", e->tab[i][j]);
@@ -93,10 +94,10 @@ void printInFile(ESTADO *e) {
 
 void position(ESTADO *e, int valor) {
     e->num_jogadas = valor * 2;
-    e->ultima_jogada.coluna = e->jogadas[e->num_jogadas-1].jogador2.coluna;
-    e->ultima_jogada.linha = e->jogadas[e->num_jogadas-1].jogador2.linha;
+    e->ultima_jogada.coluna = e->jogadas[e->num_jogadas - 1].jogador2.coluna;
+    e->ultima_jogada.linha = e->jogadas[e->num_jogadas - 1].jogador2.linha;
 
-    for (int i=(valor * 2);i < 64;i++) {
+    for (int i = (valor * 2); i < 64; i++) {
         e->jogadas[i].jogador1.linha = ' ';
         e->jogadas[i].jogador1.coluna = ' ';
         e->jogadas[i + 1].jogador2.linha = ' ';
@@ -104,8 +105,8 @@ void position(ESTADO *e, int valor) {
         i++;
     }
 
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<n;j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
             e->tab[i][j] = VAZIO;
         }
         e->tab[3][4] = PRETA;
@@ -114,9 +115,9 @@ void position(ESTADO *e, int valor) {
 
     }
 
-    for (int i=0 ; i < (valor * 2) - 1;i++) {
-        e->tab[(int)e->jogadas[i].jogador1.linha - 49][(int)e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
-        e->tab[(int)e->jogadas[i+1].jogador2.linha - 49][(int)e->jogadas[i+1].jogador2.coluna - 'a'] = PRETA;
+    for (int i = 0; i < (valor * 2) - 1; i++) {
+        e->tab[(int) e->jogadas[i].jogador1.linha - 49][(int) e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
+        e->tab[(int) e->jogadas[i + 1].jogador2.linha - 49][(int) e->jogadas[i + 1].jogador2.coluna - 'a'] = PRETA;
     }
     e->tab[(e->ultima_jogada.linha - 49)][(int) (e->ultima_jogada.coluna - 'a')] = BRANCA;
     e->jogador_atual = 1;
@@ -207,66 +208,52 @@ int interpretador(ESTADO *e) {
 
 
     if (strlen(linha) == 4 && strncmp(linha, "jog", 3) == 0) {
-        int k=0;
-        int counter=0;
+        int k = 0;
+        int counter = 0;
+        bool played = false;
         LISTA posicoes = criar_lista();
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
                     if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
-                        if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO ||
-                        e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == UM ||
-                        e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == DOIS ) {
-                            char *auxiliar = malloc(sizeof(char)*5);
-                            sprintf(auxiliar,"%c%c",e->ultima_jogada.coluna + j , e->ultima_jogada.linha + i);
-                            posicoes=insere_cabeca(posicoes, auxiliar);
+                        if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO) {
+                            char *auxiliar = malloc(sizeof(char) * 5);
+                            sprintf(auxiliar, "%c%c", e->ultima_jogada.coluna + j, e->ultima_jogada.linha + i);
+                            posicoes = insere_cabeca(posicoes, auxiliar);
                             k++;
+                        } else if ((e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == UM &&
+                                    e->jogador_atual == 1) ||
+                                   (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
+                                    DOIS && e->jogador_atual == 2)) {
+                            add_position(e->ultima_jogada.coluna + j, e->ultima_jogada.linha + i, e);
+                            played = true;
+                            break;
                         }
                     }
                 }
             }
+            if (played == true)
+                break;
+
         }
-        int choice=rand()%k;
-        char*escolha=devolve_cabeca(posicoes);
-        while(counter != choice){
-            counter++;
-            posicoes=remove_cabeca(posicoes);
-            escolha = devolve_cabeca(posicoes);
+        if (played == false) {
+            int choice = rand() % k;
+            char *escolha = devolve_cabeca(posicoes);
+            while (counter != choice) {
+                counter++;
+                posicoes = remove_cabeca(posicoes);
+                escolha = devolve_cabeca(posicoes);
+            }
+            add_position(escolha[0], escolha[1], e);
         }
-        add_position(escolha[0],escolha[1],e);
-        if (check_finish(escolha[0], escolha[1], e) != 0) {
-            if (check_finish(escolha[0], escolha[1], e) == 1)
+        printBoard(e);
+        if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) != 0) {
+            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 1)
                 puts("Player 1 wins!");
-            if (check_finish(escolha[0], escolha[1], e) == 2)
+            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 2)
                 puts("Player 2 wins!");
-            if (check_finish(escolha[0], escolha[1], e) == 3)
+            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 3)
                 printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
-        }printBoard(e);
-    }
-
-
-    if (strlen(linha) == 4 && strncmp(linha, "jog2", 3) == 0) {
-        int k=0;
-        LISTA posicoes = criar_lista();
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
-                    if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
-                        if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO ||
-                            e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == UM ||
-                            e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == DOIS ) {
-                            char *auxiliar = malloc(sizeof(char)*5);
-                            sprintf(auxiliar,"%c%c",e->ultima_jogada.coluna + j , e->ultima_jogada.linha + i);
-                            posicoes=insere_cabeca(posicoes, auxiliar);
-                            k++;
-                        }
-                    }
-                }
-            }
-        }
-        while(!lista_esta_vazia(posicoes)){
-            posicoes=remove_cabeca(posicoes);
         }
     }
 }
-

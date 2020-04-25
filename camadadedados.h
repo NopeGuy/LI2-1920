@@ -66,8 +66,11 @@ typedef struct {
 */
 
 ESTADO *inicializar_estado();
+
 int obter_jogador_atual(ESTADO *estado);
+
 int obter_numero_de_jogadas(ESTADO *estado);
+
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 
 /**
@@ -86,7 +89,6 @@ void set_casa(ESTADO *e, COORDENADA c, CASA V);
 @returns O valor da casa
 */
 CASA get_casa(ESTADO *e, COORDENADA c);
-
 
 
 #endif

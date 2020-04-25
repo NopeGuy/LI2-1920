@@ -7,6 +7,7 @@ Inicialização/configuração do tabuleiro e jogadas
 
 #ifndef RASTROSPROJECT_LOGIC_H
 #define RASTROSPROJECT_LOGIC_H
+
 #include "camadadedados.h"
 
 /** \brief Função que verifica quando o jogo se dá por terminado.
@@ -17,7 +18,7 @@ Inicialização/configuração do tabuleiro e jogadas
   * A Parte final da função verifica se as casas á volta estão vazias ou não , se sim , então o valor do check passa a 0 , caso contrário passa a 1
   */
 
-int check_finish (char letter, char number, ESTADO *e);
+int check_finish(char letter, char number, ESTADO *e);
 
 /** \brief  Função sobres as jogadas, funcionalidade e dados do jogo.
  * Esta função considera se uma jogada de um jogador é válida ou não e move a peça branca, caso a casa esteja vazia então a jogada é valida.
