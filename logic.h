@@ -26,6 +26,6 @@ int check_finish(char letter, char number, ESTADO *e);
  * Por fim esta função verifica se uma jogada é impossivel ou não, isto é, se a casa existe, ou se a casa que o jogador quer jogar é consecutiva aquela onde ele se situa.
 */
 
-bool add_position(char letter, char number, ESTADO *e);
+int add_position(char letter, char number, ESTADO *e);
 
 #endif //RASTROSPROJECT_LOGIC_H

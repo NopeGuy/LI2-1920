@@ -29,4 +29,6 @@ Lê o estado do jogo atraves do ficheiro guardado com "gr", e aplica a função 
 
 int interpretador(ESTADO *e);
 
+extern bool finish;
+
 #endif

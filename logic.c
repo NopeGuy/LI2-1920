@@ -23,15 +23,13 @@ int check_finish(char letter, char number, ESTADO *e) {
         }
     }
     if (check) {
-
         return 3;
-
     }
     return 0;
 }
 
 
-bool add_position(char letter, char number, ESTADO *e) {
+int add_position(char letter, char number, ESTADO *e) {
     if (e->tab[(number - 49)][(letter - 'a')] == VAZIO ||
         e->tab[(number - 49)][(letter - 'a')] == UM ||
         e->tab[(number - 49)][(letter - 'a')] == DOIS) {
@@ -51,11 +49,11 @@ bool add_position(char letter, char number, ESTADO *e) {
                     e->jogadas[e->num_jogadas].jogador2.coluna = letter;
                 }
                 if (check_finish(letter, number, e))
-                    return true;
+                    return 2;
                 else e->num_jogadas++;
-                return true;
+                return 1;
             }
         }
     }
-    return false;
+    return 0;
 }
