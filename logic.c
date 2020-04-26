@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
-#include "logic.h"
 #include "camadadedados.h"
-#include <stdio.h>
 
 int check_finish(char letter, char number, ESTADO *e) {
     int check = 1;
@@ -34,13 +32,13 @@ int check_finish(char letter, char number, ESTADO *e) {
 
 
 bool add_position(char letter, char number, ESTADO *e) {
-    if (e->tab[(int) (number - 49)][(int) (letter - 'a')] == VAZIO ||
-        e->tab[(int) (number - 49)][(int) (letter - 'a')] == UM ||
-        e->tab[(int) (number - 49)][(int) (letter - 'a')] == DOIS) {
+    if (e->tab[(number - 49)][(letter - 'a')] == VAZIO ||
+        e->tab[(number - 49)][(letter - 'a')] == UM ||
+        e->tab[(number - 49)][(letter - 'a')] == DOIS) {
         if (!(abs(letter - (e->ultima_jogada.coluna)) > 1 || abs(number - (e->ultima_jogada.linha)) > 1)) {
             if (letter >= 'a' && letter <= 'h' && number >= '1' && number <= '8') {
-                e->tab[(e->ultima_jogada.linha - 49)][(int) (e->ultima_jogada.coluna - 'a')] = PRETA;
-                e->tab[(int) (number - 49)][(int) (letter - 'a')] = BRANCA;
+                e->tab[(e->ultima_jogada.linha - 49)][(e->ultima_jogada.coluna - 'a')] = PRETA;
+                e->tab[(number - 49)][(letter - 'a')] = BRANCA;
                 e->ultima_jogada.linha = number;
                 e->ultima_jogada.coluna = letter;
                 if (e->jogador_atual == 1) {

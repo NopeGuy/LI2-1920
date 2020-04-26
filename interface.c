@@ -116,10 +116,10 @@ void position(ESTADO *e, int valor) {
     }
 
     for (int i = 0; i < (valor * 2) - 1; i++) {
-        e->tab[(int) e->jogadas[i].jogador1.linha - 49][(int) e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
-        e->tab[(int) e->jogadas[i + 1].jogador2.linha - 49][(int) e->jogadas[i + 1].jogador2.coluna - 'a'] = PRETA;
+        e->tab[e->jogadas[i].jogador1.linha - 49][e->jogadas[i].jogador1.coluna - 'a'] = PRETA;
+        e->tab[e->jogadas[i + 1].jogador2.linha - 49][e->jogadas[i + 1].jogador2.coluna - 'a'] = PRETA;
     }
-    e->tab[(e->ultima_jogada.linha - 49)][(int) (e->ultima_jogada.coluna - 'a')] = BRANCA;
+    e->tab[(e->ultima_jogada.linha - 49)][(e->ultima_jogada.coluna - 'a')] = BRANCA;
     e->jogador_atual = 1;
     printBoard(e);
 
@@ -225,7 +225,7 @@ int interpretador(ESTADO *e) {
                                     e->jogador_atual == 1) ||
                                    (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
                                     DOIS && e->jogador_atual == 2)) {
-                            add_position(e->ultima_jogada.coluna + j, e->ultima_jogada.linha + i, e);
+                            add_position((char) (e->ultima_jogada.coluna + j), (char) (e->ultima_jogada.linha + i), e);
                             played = true;
                             break;
                         }
@@ -247,12 +247,12 @@ int interpretador(ESTADO *e) {
             add_position(escolha[0], escolha[1], e);
         }
         printBoard(e);
-        if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) != 0) {
-            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 1)
+        if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) != 0) {
+            if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 1)
                 puts("Player 1 wins!");
-            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 2)
+            if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 2)
                 puts("Player 2 wins!");
-            if (check_finish(e->ultima_jogada.coluna, e->ultima_jogada.linha, e) == 3)
+            if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 3)
                 printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
         }
     }
