@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "interface.h"
 #include "camadadedados.h"
 #include <string.h>
@@ -28,6 +29,18 @@ void jogadas(ESTADO *e) {
     }
     printf("\n");
 
+}
+
+int distancia_euclidiana(char x, char y, ESTADO *e) {
+    int value;
+    int letra = x - 'a';
+    int numero = y - 49;
+//    printf("\n %d && %d", letra, numero);
+    if (e->jogador_atual == 1)
+        value = (int) sqrt(pow(letra, 2) + pow(numero - 7, 2));
+    else value = (int) sqrt(pow(letra - 7, 2) + pow(numero, 2));
+//    printf("\nand now %d", value);
+    return value;
 }
 
 void jogadasInFile(ESTADO *e) {
@@ -137,10 +150,10 @@ int interpretador(ESTADO *e) {
 
     if (fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
+
     if (finish == true) {
         printf("Jogo finalizado por favor escolha outro comando.");
-    }
-    else if (finish == false){
+    } else if (finish == false) {
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             if (add_position(*col, *lin, e) == 0)
                 printf("Jogada invalida\n");
@@ -203,6 +216,7 @@ int interpretador(ESTADO *e) {
                     posicoes = remove_cabeca(posicoes);
                     escolha = devolve_cabeca(posicoes);
                 }
+                printf("\n%s", escolha);
                 add_position(escolha[0], escolha[1], e);
             }
             printBoard(e);
@@ -257,14 +271,34 @@ int interpretador(ESTADO *e) {
 
             }
             if (played == false) {
-                int choice = rand() % k;
-                char *escolha = devolve_cabeca(posicoes);
-                while (counter != choice) {
-                    counter++;
-                    posicoes = remove_cabeca(posicoes);
-                    escolha = devolve_cabeca(posicoes);
+                char *minValue = devolve_cabeca(posicoes);
+                char *maxValue = devolve_cabeca(posicoes);
+                if (e->jogador_atual == 1 && played == false) { // objetivo do Player1 é chegar à e->tab[7][0]
+                    for (int i = 0; i < k; i++) {  // procurar a jogada com a distancia euclidiana
+                        posicoes = remove_cabeca(posicoes); // remover o primeiro elemento
+                        if (lista_esta_vazia(posicoes) == 1)
+                            break;
+                        char *aux = devolve_cabeca(posicoes); // proxima jogada possivel
+                        if (distancia_euclidiana(minValue[0], minValue[1], e) >=
+                            distancia_euclidiana(aux[0], aux[1], e))
+                            minValue = aux;
+                    }
+                    add_position(minValue[0], minValue[1], e);
+                    played = true;
                 }
-                add_position(escolha[0], escolha[1], e);
+                if (e->jogador_atual == 2 && played == false) {
+                    for (int i = 0; i < k; i++) {
+                        posicoes = remove_cabeca(posicoes);
+                        if (lista_esta_vazia(posicoes) == 1)
+                            break;
+                        char *aux2 = devolve_cabeca(posicoes);
+                        if (distancia_euclidiana(maxValue[0], maxValue[1], e) <=
+                            distancia_euclidiana(aux2[0], aux2[1], e))
+                            maxValue = aux2;
+                    }
+                    add_position(maxValue[0], maxValue[1], e);
+                    played = true;
+                }
             }
             printBoard(e);
             if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) != 0) {
@@ -284,6 +318,7 @@ int interpretador(ESTADO *e) {
                     return 2;
                 }
             }
+            finish = false;
         }
     }
 
@@ -312,21 +347,22 @@ int interpretador(ESTADO *e) {
 
 
     if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
+        e = inicializar_estado();
         finish = false;
         char check[5] = "01:";
         int find_pos = 0;
         int line_num = 1;
-
         strcat(filename, dir);
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
+        int i;
+        printf("Jogador 1:");
         while (fgets(linha, BUF_SIZE, fp) != NULL) {
             if (strstr(linha, check) != NULL) {
                 find_pos++;
             }
             line_num++;
             if (find_pos != 0) {
-                printf("%s", linha);
                 add_position(linha[4], linha[5], e);
                 add_position(linha[7], linha[8], e);
             }
@@ -336,11 +372,17 @@ int interpretador(ESTADO *e) {
 
 
     if (strncmp(linha, "pos", 3) == 0 && sscanf(linha, "%s %d", token, &valor)) {
-        if (valor >= e->num_jogadas) {
-            printf("Por favor utilize um valor entre 0 e %d", e->num_jogadas);
-        } else position(e, valor);
+        if (valor == 0)
+            printf("Ainda não há jogadas no tabuleiro");
+
+        if (valor >= e->num_jogadas)
+            printf("Por favor utilize um valor entre 1 e %d\n", e->num_jogadas / 2);
+
+        else {
+            finish = false;
+            position(e, valor);
+        }
+
     }
-
-
     return 1;
 }
