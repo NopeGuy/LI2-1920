@@ -1,1 +1,7 @@
 Relatório do guião 9
+
+Criação do bot
+
+Começamos por usar uma estrutura já criada de verificação de jogadas, depois criamos uma função para que sempre que seja  possível ganhar o computador, então, efetuar sempre essa jogada.
+Para a estratégia do bot, verificamos quantas vezes era introduzida uma posição na lista e através disso fazemos com que se gere um número aleatório através da rand de 0 até esse mesmo valor.
+Sucessivamente usamos a função "remove_cabeça" esse tanto de vezes e logo em seguida usavamo sa função "devolver_cabeça" para escolher a posição que será jogada , esta posição nada mais é que a cabeça da lista posições após termos removido a cabeça da lista um número aleatório de vezes.
