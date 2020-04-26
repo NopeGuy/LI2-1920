@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['estado_5',['ESTADO',['../struct_e_s_t_a_d_o.html',1,'']]]
+  ['devolve_5fcabeca_6',['devolve_cabeca',['../lista_8h.html#abfcb205f3eb670157be0d1221021714b',1,'lista.c']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5fcasa_23',['get_casa',['../camadadedados_8h.html#a20acddc30eae79368814d559cce579a9',1,'camadadedados.h']]]
+  ['devolve_5fcabeca_34',['devolve_cabeca',['../lista_8h.html#abfcb205f3eb670157be0d1221021714b',1,'lista.c']]]
 ];

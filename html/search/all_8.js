@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['set_5fcasa_14',['set_casa',['../camadadedados_8h.html#a4ff507f9c0fe1035cf233f4964b1a302',1,'camadadedados.h']]]
+  ['printboard_19',['printBoard',['../interface_8h.html#abef6a3cea4024b440dd53791f894d859',1,'interface.c']]],
+  ['proximo_20',['proximo',['../lista_8h.html#ad9380152361127432c55c1c6067e05ae',1,'lista.c']]]
 ];

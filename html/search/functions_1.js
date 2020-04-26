@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['check_5ffinish_22',['check_finish',['../logic_8h.html#a63c768ac9f636592a8529817094c1289',1,'logic.c']]]
+  ['check_5ffinish_32',['check_finish',['../logic_8h.html#a43982fa6048da27b2c695d9e0ef6ac61',1,'logic.c']]],
+  ['criar_5flista_33',['criar_lista',['../lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e',1,'lista.c']]]
 ];
