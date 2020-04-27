@@ -347,7 +347,6 @@ int interpretador(ESTADO *e) {
 
 
     if (strncmp(linha, "ler", 3) == 0 && sscanf(linha, "%s %s", token, dir)) {
-        e = inicializar_estado();
         finish = false;
         char check[5] = "01:";
         int find_pos = 0;
@@ -356,6 +355,10 @@ int interpretador(ESTADO *e) {
         strcat(filename, ".txt");
         fp = fopen(filename, "r");
         int i;
+        e->jogadas->jogador1.linha = ' ';
+        e->jogadas->jogador1.coluna = ' ';
+        e->jogadas->jogador2.linha = ' ';
+        e->jogadas->jogador2.coluna = ' ';
         printf("Jogador 1:");
         while (fgets(linha, BUF_SIZE, fp) != NULL) {
             if (strstr(linha, check) != NULL) {
