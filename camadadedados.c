@@ -13,9 +13,8 @@ ESTADO *inicializar_estado() {
     e->jogadas->jogador1.coluna = ' ';
     e->jogadas->jogador2.linha = ' ';
     e->jogadas->jogador2.coluna = ' ';
-    int i, j;
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
             e->tab[i][j] = VAZIO;
         }
         e->tab[3][4] = BRANCA;
@@ -26,3 +25,7 @@ ESTADO *inicializar_estado() {
     return e;
 }
 
+//ESTADO *e;
+//int obter_jogador_atual(ESTADO *estado) {
+//    return e->jogador_atual;
+//}

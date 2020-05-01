@@ -38,7 +38,7 @@ int distancia_euclidiana(char x, char y, ESTADO *e) {
 //    printf("\n %d && %d", letra, numero);
     if (e->jogador_atual == 1)
         value = (int) sqrt(pow(letra, 2) + pow(numero - 7, 2));
-    else value = (int) sqrt(pow(letra - 7, 2) + pow(numero, 2));
+    else value = (int) sqrt(pow(letra - 7, 2) + pow(numero,2));
 //    printf("\nand now %d", value);
     return value;
 }
@@ -48,9 +48,7 @@ void jogadasInFile(ESTADO *e) {
     int k = 0;
     int i = 1;
     while (k < e->num_jogadas) {
-        fprintf(fp, "0%d: %c%c ", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha);
-        if (e->num_jogadas % 2 != 0 && k != e->num_jogadas - 1)
-            fprintf(fp, "%c%c\n", e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
+        fprintf(fp, "0%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha, e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
         k += 2;
         i++;
     }
@@ -241,84 +239,90 @@ int interpretador(ESTADO *e) {
 
         if (strlen(linha) == 5 && strncmp(linha, "jog2", 4) == 0) {
             int k = 0;
-            int counter = 0;
             bool played = false;
             LISTA posicoes = criar_lista();
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
-                        if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
-                            if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] == VAZIO) {
-                                char *auxiliar = malloc(sizeof(char) * 5);
-                                sprintf(auxiliar, "%c%c", e->ultima_jogada.coluna + j, e->ultima_jogada.linha + i);
-                                posicoes = insere_cabeca(posicoes, auxiliar);
-                                k++;
-                            } else if ((e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
-                                        UM &&
-                                        e->jogador_atual == 1) ||
-                                       (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
-                                        DOIS && e->jogador_atual == 2)) {
-                                add_position((char) (e->ultima_jogada.coluna + j), (char) (e->ultima_jogada.linha + i),
-                                             e);
-                                played = true;
-                                break;
+            if (finish = true)
+                puts("Jogo finalizado por favor escolha outro comando.");
+            else {
+                for (int i = -1; i <= 1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        if (e->ultima_jogada.coluna + j >= 'a' && e->ultima_jogada.coluna + j <= 'h') {
+                            if (e->ultima_jogada.linha + i >= '1' && e->ultima_jogada.linha + i <= '8') {
+                                if (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
+                                    VAZIO) {
+                                    char *auxiliar = malloc(sizeof(char) * 5);
+                                    sprintf(auxiliar, "%c%c", e->ultima_jogada.coluna + j, e->ultima_jogada.linha + i);
+                                    posicoes = insere_cabeca(posicoes, auxiliar);
+                                    k++;
+                                } else if (
+                                        (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
+                                         UM &&
+                                         e->jogador_atual == 1) ||
+                                        (e->tab[e->ultima_jogada.linha + i - '1'][e->ultima_jogada.coluna + j - 'a'] ==
+                                         DOIS && e->jogador_atual == 2)) {
+                                    add_position((char) (e->ultima_jogada.coluna + j),
+                                                 (char) (e->ultima_jogada.linha + i),
+                                                 e);
+                                    played = true;
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-                if (played == true)
-                    break;
+                    if (played == true)
+                        break;
 
-            }
-            if (played == false) {
-                char *minValue = devolve_cabeca(posicoes);
-                char *maxValue = devolve_cabeca(posicoes);
-                if (e->jogador_atual == 1 && played == false) { // objetivo do Player1 é chegar à e->tab[7][0]
-                    for (int i = 0; i < k; i++) {  // procurar a jogada com a distancia euclidiana
-                        posicoes = remove_cabeca(posicoes); // remover o primeiro elemento
-                        if (lista_esta_vazia(posicoes) == 1)
-                            break;
-                        char *aux = devolve_cabeca(posicoes); // proxima jogada possivel
-                        if (distancia_euclidiana(minValue[0], minValue[1], e) >=
-                            distancia_euclidiana(aux[0], aux[1], e))
-                            minValue = aux;
+                }
+                if (played == false) {
+                    char *minValue = devolve_cabeca(posicoes);
+                    char *maxValue = devolve_cabeca(posicoes);
+                    if (e->jogador_atual == 1 && played == false) { // objetivo do Player1 é chegar à e->tab[7][0]
+                        for (int i = 0; i < k; i++) {  // procurar a jogada com a distancia euclidiana
+                            posicoes = remove_cabeca(posicoes); // remover o primeiro elemento
+                            if (lista_esta_vazia(posicoes) == 1)
+                                break;
+                            char *aux = devolve_cabeca(posicoes); // proxima jogada possivel
+                            if (distancia_euclidiana(minValue[0], minValue[1], e) >=
+                                distancia_euclidiana(aux[0], aux[1], e))
+                                minValue = aux;
+                        }
+                        add_position(minValue[0], minValue[1], e);
+                        played = true;
                     }
-                    add_position(minValue[0], minValue[1], e);
-                    played = true;
-                }
-                if (e->jogador_atual == 2 && played == false) {
-                    for (int i = 0; i < k; i++) {
-                        posicoes = remove_cabeca(posicoes);
-                        if (lista_esta_vazia(posicoes) == 1)
-                            break;
-                        char *aux2 = devolve_cabeca(posicoes);
-                        if (distancia_euclidiana(maxValue[0], maxValue[1], e) <=
-                            distancia_euclidiana(aux2[0], aux2[1], e))
-                            maxValue = aux2;
+                    if (e->jogador_atual == 2 && played == false) {
+                        for (int i = 0; i < k; i++) {
+                            posicoes = remove_cabeca(posicoes);
+                            if (lista_esta_vazia(posicoes) == 1)
+                                break;
+                            char *aux2 = devolve_cabeca(posicoes);
+                            if (distancia_euclidiana(maxValue[0], maxValue[1], e) <=
+                                distancia_euclidiana(aux2[0], aux2[1], e))
+                                maxValue = aux2;
+                        }
+                        add_position(maxValue[0], maxValue[1], e);
+                        played = true;
                     }
-                    add_position(maxValue[0], maxValue[1], e);
-                    played = true;
                 }
+                printBoard(e);
+                if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) != 0) {
+                    if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 1) {
+                        puts("Player 1 wins!");
+                        finish = true;
+                        return 2;
+                    }
+                    if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 2) {
+                        puts("Player 2 wins!");
+                        finish = true;
+                        return 2;
+                    }
+                    if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 3) {
+                        printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
+                        finish = true;
+                        return 2;
+                    }
+                }
+                finish = false;
             }
-            printBoard(e);
-            if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) != 0) {
-                if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 1) {
-                    puts("Player 1 wins!");
-                    finish = true;
-                    return 2;
-                }
-                if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 2) {
-                    puts("Player 2 wins!");
-                    finish = true;
-                    return 2;
-                }
-                if (check_finish((char) e->ultima_jogada.coluna, (char) e->ultima_jogada.linha, e) == 3) {
-                    printf("\nPlayer %i wins!", e->jogador_atual % 2 + 1);
-                    finish = true;
-                    return 2;
-                }
-            }
-            finish = false;
         }
     }
 
@@ -351,15 +355,28 @@ int interpretador(ESTADO *e) {
         char check[5] = "01:";
         int find_pos = 0;
         int line_num = 1;
-        strcat(filename, dir);
-        strcat(filename, ".txt");
-        fp = fopen(filename, "r");
-        int i;
+        e->jogador_atual = 1;
+        e->num_jogadas = 0;
+        e->ultima_jogada.linha = '4';
+        e->ultima_jogada.coluna = 'e';
         e->jogadas->jogador1.linha = ' ';
         e->jogadas->jogador1.coluna = ' ';
         e->jogadas->jogador2.linha = ' ';
         e->jogadas->jogador2.coluna = ' ';
-        printf("Jogador 1:");
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                e->tab[i][j] = VAZIO;
+            }
+            e->tab[3][4] = BRANCA;
+            e->tab[0][7] = DOIS;
+            e->tab[7][0] = UM;
+
+        }
+
+        strcat(filename, dir);
+        strcat(filename, ".txt");
+        fp = fopen(filename, "r");
         while (fgets(linha, BUF_SIZE, fp) != NULL) {
             if (strstr(linha, check) != NULL) {
                 find_pos++;
@@ -371,6 +388,12 @@ int interpretador(ESTADO *e) {
             }
         }
         printBoard(e);
+        if  (e->tab[7][0] == BRANCA ||
+            e->tab[0][7] == BRANCA ||
+            check_finish(e->ultima_jogada.coluna,e->ultima_jogada.linha,e) == 3) {
+            puts("Game over.");
+            finish = true;
+        }
     }
 
 
