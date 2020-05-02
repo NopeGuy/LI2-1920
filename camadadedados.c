@@ -24,8 +24,3 @@ ESTADO *inicializar_estado() {
     }
     return e;
 }
-
-//ESTADO *e;
-//int obter_jogador_atual(ESTADO *estado) {
-//    return e->jogador_atual;
-//}

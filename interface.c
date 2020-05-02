@@ -35,11 +35,9 @@ int distancia_euclidiana(char x, char y, ESTADO *e) {
     int value;
     int letra = x - 'a';
     int numero = y - 49;
-//    printf("\n %d && %d", letra, numero);
     if (e->jogador_atual == 1)
         value = (int) sqrt(pow(letra, 2) + pow(numero - 7, 2));
     else value = (int) sqrt(pow(letra - 7, 2) + pow(numero,2));
-//    printf("\nand now %d", value);
     return value;
 }
 
@@ -48,9 +46,17 @@ void jogadasInFile(ESTADO *e) {
     int k = 0;
     int i = 1;
     while (k < e->num_jogadas) {
-        fprintf(fp, "0%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha, e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
-        k += 2;
-        i++;
+        if(i<=9) {
+            fprintf(fp, "0%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha,
+                    e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
+            k += 2;
+            i++;
+        } else if (i>9){
+            fprintf(fp, "%d: %c%c %c%c\n", i, e->jogadas[k].jogador1.coluna, e->jogadas[k].jogador1.linha,
+                    e->jogadas[k + 1].jogador2.coluna, e->jogadas[k + 1].jogador2.linha);
+            k += 2;
+            i++;
+        }
     }
     fprintf(fp, "\n");
 }
@@ -70,7 +76,7 @@ void printBoard(ESTADO *e) {
         k++;
     }
     printf("\n  ---------------------------------\n");
-    for (i = 0; i < n; i++) {  //print rows lines
+    for (i = 0; i < n; i++) {
         printf("%d ", i + 1);
         for (j = 0; j < n; j++) {
             printf("|");
@@ -86,7 +92,7 @@ void printBoard(ESTADO *e) {
 }
 
 void printInFile(ESTADO *e) {
-    for (int i = 0; i < n; i++) {  //print rows lines
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (e->tab[i][j] == VAZIO)
                 fprintf(fp, ". ");
@@ -276,12 +282,12 @@ int interpretador(ESTADO *e) {
                 if (played == false) {
                     char *minValue = devolve_cabeca(posicoes);
                     char *maxValue = devolve_cabeca(posicoes);
-                    if (e->jogador_atual == 1 && played == false) { // objetivo do Player1 é chegar à e->tab[7][0]
-                        for (int i = 0; i < k; i++) {  // procurar a jogada com a distancia euclidiana
-                            posicoes = remove_cabeca(posicoes); // remover o primeiro elemento
+                    if (e->jogador_atual == 1 && played == false) {
+                        for (int i = 0; i < k; i++) {
+                            posicoes = remove_cabeca(posicoes);
                             if (lista_esta_vazia(posicoes) == 1)
                                 break;
-                            char *aux = devolve_cabeca(posicoes); // proxima jogada possivel
+                            char *aux = devolve_cabeca(posicoes);
                             if (distancia_euclidiana(minValue[0], minValue[1], e) >=
                                 distancia_euclidiana(aux[0], aux[1], e))
                                 minValue = aux;
@@ -389,8 +395,8 @@ int interpretador(ESTADO *e) {
         }
         printBoard(e);
         if  (e->tab[7][0] == BRANCA ||
-            e->tab[0][7] == BRANCA ||
-            check_finish(e->ultima_jogada.coluna,e->ultima_jogada.linha,e) == 3) {
+             e->tab[0][7] == BRANCA ||
+             check_finish(e->ultima_jogada.coluna,e->ultima_jogada.linha,e) == 3) {
             puts("Game over.");
             finish = true;
         }
