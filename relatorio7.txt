@@ -1,6 +1,0 @@
-Relatório doguiao 7
-
-
-Todas as tarefas propostas para esta semana foram realizadas.
-No inicio tivemos dificuldade em perceber como os comandos gr , ler e movs funcionavam e como integra-los no nossos código.
-Para tal tivemos de mudar certas funções para torna-las dependentes do estado. Como por exemplo na função add_position
