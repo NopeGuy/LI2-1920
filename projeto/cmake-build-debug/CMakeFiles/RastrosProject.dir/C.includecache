@@ -6,29 +6,79 @@
 
 #IncludeRegexTransform: 
 
-F:/Projeto LA/Mark 7 untampered/camadadedados.h
-
-F:/Projeto LA/Mark 7 untampered/interface.c
-stdio.h
+F:/Projeto LA/Final acho eu/camadadedados.c
+camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
+stdlib.h
 -
 interface.h
-F:/Projeto LA/Mark 7 untampered/interface.h
+F:/Projeto LA/Final acho eu/interface.h
+
+F:/Projeto LA/Final acho eu/camadadedados.h
+
+F:/Projeto LA/Final acho eu/interface.c
+stdio.h
+-
+math.h
+-
+interface.h
+F:/Projeto LA/Final acho eu/interface.h
 camadadedados.h
-F:/Projeto LA/Mark 7 untampered/camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
 string.h
 -
 logic.h
-F:/Projeto LA/Mark 7 untampered/logic.h
+F:/Projeto LA/Final acho eu/logic.h
+lista.h
+F:/Projeto LA/Final acho eu/lista.h
+stdlib.h
+-
 
-F:/Projeto LA/Mark 7 untampered/interface.h
+F:/Projeto LA/Final acho eu/interface.h
 camadadedados.h
-F:/Projeto LA/Mark 7 untampered/camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
 stdbool.h
 -
 camadadedados.h
-F:/Projeto LA/Mark 7 untampered/camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
 
-F:/Projeto LA/Mark 7 untampered/logic.h
+F:/Projeto LA/Final acho eu/lista.c
+lista.h
+F:/Projeto LA/Final acho eu/lista.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
 camadadedados.h
-F:/Projeto LA/Mark 7 untampered/camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
+
+F:/Projeto LA/Final acho eu/lista.h
+camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
+
+F:/Projeto LA/Final acho eu/logic.c
+stdlib.h
+-
+stdbool.h
+-
+camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
+
+F:/Projeto LA/Final acho eu/logic.h
+camadadedados.h
+F:/Projeto LA/Final acho eu/camadadedados.h
+
+F:/Projeto LA/Final acho eu/main.c
+stdio.h
+-
+time.h
+-
+stdlib.h
+-
+interface.h
+F:/Projeto LA/Final acho eu/interface.h
+logic.h
+F:/Projeto LA/Final acho eu/logic.h
 

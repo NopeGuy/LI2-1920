@@ -42,10 +42,10 @@ RM = "F:\Programs\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "F:\Projeto LA\Mark 7 untampered"
+CMAKE_SOURCE_DIR = "F:\Projeto LA\Final acho eu"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "F:\Projeto LA\Mark 7 untampered\cmake-build-debug"
+CMAKE_BINARY_DIR = "F:\Projeto LA\Final acho eu\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/RastrosProject.dir/depend.make
@@ -58,62 +58,76 @@ include CMakeFiles/RastrosProject.dir/flags.make
 
 CMakeFiles/RastrosProject.dir/main.c.obj: CMakeFiles/RastrosProject.dir/flags.make
 CMakeFiles/RastrosProject.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/RastrosProject.dir/main.c.obj"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\main.c.obj   -c "F:\Projeto LA\Mark 7 untampered\main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/RastrosProject.dir/main.c.obj"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\main.c.obj   -c "F:\Projeto LA\Final acho eu\main.c"
 
 CMakeFiles/RastrosProject.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/RastrosProject.dir/main.c.i"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Mark 7 untampered\main.c" > CMakeFiles\RastrosProject.dir\main.c.i
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Final acho eu\main.c" > CMakeFiles\RastrosProject.dir\main.c.i
 
 CMakeFiles/RastrosProject.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/RastrosProject.dir/main.c.s"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Mark 7 untampered\main.c" -o CMakeFiles\RastrosProject.dir\main.c.s
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Final acho eu\main.c" -o CMakeFiles\RastrosProject.dir\main.c.s
 
 CMakeFiles/RastrosProject.dir/interface.c.obj: CMakeFiles/RastrosProject.dir/flags.make
 CMakeFiles/RastrosProject.dir/interface.c.obj: ../interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/RastrosProject.dir/interface.c.obj"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\interface.c.obj   -c "F:\Projeto LA\Mark 7 untampered\interface.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/RastrosProject.dir/interface.c.obj"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\interface.c.obj   -c "F:\Projeto LA\Final acho eu\interface.c"
 
 CMakeFiles/RastrosProject.dir/interface.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/RastrosProject.dir/interface.c.i"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Mark 7 untampered\interface.c" > CMakeFiles\RastrosProject.dir\interface.c.i
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Final acho eu\interface.c" > CMakeFiles\RastrosProject.dir\interface.c.i
 
 CMakeFiles/RastrosProject.dir/interface.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/RastrosProject.dir/interface.c.s"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Mark 7 untampered\interface.c" -o CMakeFiles\RastrosProject.dir\interface.c.s
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Final acho eu\interface.c" -o CMakeFiles\RastrosProject.dir\interface.c.s
 
 CMakeFiles/RastrosProject.dir/camadadedados.c.obj: CMakeFiles/RastrosProject.dir/flags.make
 CMakeFiles/RastrosProject.dir/camadadedados.c.obj: ../camadadedados.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/RastrosProject.dir/camadadedados.c.obj"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\camadadedados.c.obj   -c "F:\Projeto LA\Mark 7 untampered\camadadedados.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/RastrosProject.dir/camadadedados.c.obj"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\camadadedados.c.obj   -c "F:\Projeto LA\Final acho eu\camadadedados.c"
 
 CMakeFiles/RastrosProject.dir/camadadedados.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/RastrosProject.dir/camadadedados.c.i"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Mark 7 untampered\camadadedados.c" > CMakeFiles\RastrosProject.dir\camadadedados.c.i
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Final acho eu\camadadedados.c" > CMakeFiles\RastrosProject.dir\camadadedados.c.i
 
 CMakeFiles/RastrosProject.dir/camadadedados.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/RastrosProject.dir/camadadedados.c.s"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Mark 7 untampered\camadadedados.c" -o CMakeFiles\RastrosProject.dir\camadadedados.c.s
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Final acho eu\camadadedados.c" -o CMakeFiles\RastrosProject.dir\camadadedados.c.s
 
 CMakeFiles/RastrosProject.dir/logic.c.obj: CMakeFiles/RastrosProject.dir/flags.make
 CMakeFiles/RastrosProject.dir/logic.c.obj: ../logic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/RastrosProject.dir/logic.c.obj"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\logic.c.obj   -c "F:\Projeto LA\Mark 7 untampered\logic.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/RastrosProject.dir/logic.c.obj"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\logic.c.obj   -c "F:\Projeto LA\Final acho eu\logic.c"
 
 CMakeFiles/RastrosProject.dir/logic.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/RastrosProject.dir/logic.c.i"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Mark 7 untampered\logic.c" > CMakeFiles\RastrosProject.dir\logic.c.i
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Final acho eu\logic.c" > CMakeFiles\RastrosProject.dir\logic.c.i
 
 CMakeFiles/RastrosProject.dir/logic.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/RastrosProject.dir/logic.c.s"
-	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Mark 7 untampered\logic.c" -o CMakeFiles\RastrosProject.dir\logic.c.s
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Final acho eu\logic.c" -o CMakeFiles\RastrosProject.dir\logic.c.s
+
+CMakeFiles/RastrosProject.dir/lista.c.obj: CMakeFiles/RastrosProject.dir/flags.make
+CMakeFiles/RastrosProject.dir/lista.c.obj: ../lista.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/RastrosProject.dir/lista.c.obj"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\RastrosProject.dir\lista.c.obj   -c "F:\Projeto LA\Final acho eu\lista.c"
+
+CMakeFiles/RastrosProject.dir/lista.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/RastrosProject.dir/lista.c.i"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Projeto LA\Final acho eu\lista.c" > CMakeFiles\RastrosProject.dir\lista.c.i
+
+CMakeFiles/RastrosProject.dir/lista.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/RastrosProject.dir/lista.c.s"
+	F:\Programs\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "F:\Projeto LA\Final acho eu\lista.c" -o CMakeFiles\RastrosProject.dir\lista.c.s
 
 # Object files for target RastrosProject
 RastrosProject_OBJECTS = \
 "CMakeFiles/RastrosProject.dir/main.c.obj" \
 "CMakeFiles/RastrosProject.dir/interface.c.obj" \
 "CMakeFiles/RastrosProject.dir/camadadedados.c.obj" \
-"CMakeFiles/RastrosProject.dir/logic.c.obj"
+"CMakeFiles/RastrosProject.dir/logic.c.obj" \
+"CMakeFiles/RastrosProject.dir/lista.c.obj"
 
 # External object files for target RastrosProject
 RastrosProject_EXTERNAL_OBJECTS =
@@ -122,11 +136,12 @@ RastrosProject.exe: CMakeFiles/RastrosProject.dir/main.c.obj
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/interface.c.obj
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/camadadedados.c.obj
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/logic.c.obj
+RastrosProject.exe: CMakeFiles/RastrosProject.dir/lista.c.obj
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/build.make
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/linklibs.rsp
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/objects1.rsp
 RastrosProject.exe: CMakeFiles/RastrosProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable RastrosProject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable RastrosProject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RastrosProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -139,6 +154,6 @@ CMakeFiles/RastrosProject.dir/clean:
 .PHONY : CMakeFiles/RastrosProject.dir/clean
 
 CMakeFiles/RastrosProject.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "F:\Projeto LA\Mark 7 untampered" "F:\Projeto LA\Mark 7 untampered" "F:\Projeto LA\Mark 7 untampered\cmake-build-debug" "F:\Projeto LA\Mark 7 untampered\cmake-build-debug" "F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles\RastrosProject.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "F:\Projeto LA\Final acho eu" "F:\Projeto LA\Final acho eu" "F:\Projeto LA\Final acho eu\cmake-build-debug" "F:\Projeto LA\Final acho eu\cmake-build-debug" "F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles\RastrosProject.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/RastrosProject.dir/depend
 

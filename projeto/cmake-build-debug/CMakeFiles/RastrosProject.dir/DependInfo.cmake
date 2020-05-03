@@ -4,10 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "F:/Projeto LA/Mark 7 untampered/camadadedados.c" "F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/RastrosProject.dir/camadadedados.c.obj"
-  "F:/Projeto LA/Mark 7 untampered/interface.c" "F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/RastrosProject.dir/interface.c.obj"
-  "F:/Projeto LA/Mark 7 untampered/logic.c" "F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/RastrosProject.dir/logic.c.obj"
-  "F:/Projeto LA/Mark 7 untampered/main.c" "F:/Projeto LA/Mark 7 untampered/cmake-build-debug/CMakeFiles/RastrosProject.dir/main.c.obj"
+  "F:/Projeto LA/Final acho eu/camadadedados.c" "F:/Projeto LA/Final acho eu/cmake-build-debug/CMakeFiles/RastrosProject.dir/camadadedados.c.obj"
+  "F:/Projeto LA/Final acho eu/interface.c" "F:/Projeto LA/Final acho eu/cmake-build-debug/CMakeFiles/RastrosProject.dir/interface.c.obj"
+  "F:/Projeto LA/Final acho eu/lista.c" "F:/Projeto LA/Final acho eu/cmake-build-debug/CMakeFiles/RastrosProject.dir/lista.c.obj"
+  "F:/Projeto LA/Final acho eu/logic.c" "F:/Projeto LA/Final acho eu/cmake-build-debug/CMakeFiles/RastrosProject.dir/logic.c.obj"
+  "F:/Projeto LA/Final acho eu/main.c" "F:/Projeto LA/Final acho eu/cmake-build-debug/CMakeFiles/RastrosProject.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RastrosProject.dir/camadadedados.c.obj"
   "CMakeFiles/RastrosProject.dir/interface.c.obj"
+  "CMakeFiles/RastrosProject.dir/lista.c.obj"
   "CMakeFiles/RastrosProject.dir/logic.c.obj"
   "CMakeFiles/RastrosProject.dir/main.c.obj"
   "RastrosProject.exe"

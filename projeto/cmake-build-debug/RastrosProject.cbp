@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="F:/Projeto LA/Mark 7 untampered/cmake-build-debug"/>
+				<Option working_dir="F:/Projeto LA/Final acho eu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="RastrosProject">
-				<Option output="F:/Projeto LA/Mark 7 untampered/cmake-build-debug/RastrosProject.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/Projeto LA/Mark 7 untampered/cmake-build-debug"/>
+				<Option output="F:/Projeto LA/Final acho eu/cmake-build-debug/RastrosProject.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/Projeto LA/Final acho eu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -29,15 +29,15 @@
 					<Add directory="F:/Programs/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosProject"/>
-					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosProject"/>
+					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="RastrosProject/fast">
-				<Option output="F:/Projeto LA/Mark 7 untampered/cmake-build-debug/RastrosProject.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/Projeto LA/Mark 7 untampered/cmake-build-debug"/>
+				<Option output="F:/Projeto LA/Final acho eu/cmake-build-debug/RastrosProject.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/Projeto LA/Final acho eu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -47,55 +47,61 @@
 					<Add directory="F:/Programs/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosProject/fast"/>
-					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 RastrosProject/fast"/>
+					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="F:/Projeto LA/Mark 7 untampered/cmake-build-debug"/>
+				<Option working_dir="F:/Projeto LA/Final acho eu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="F:/Projeto LA/Mark 7 untampered/cmake-build-debug"/>
+				<Option working_dir="F:/Projeto LA/Final acho eu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Mark 7 untampered/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="F:/Programs/mingw32/bin/mingw32-make.exe -f &quot;F:/Projeto LA/Final acho eu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/camadadedados.c">
+		<Unit filename="F:/Projeto LA/Final acho eu/camadadedados.c">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/camadadedados.h">
+		<Unit filename="F:/Projeto LA/Final acho eu/camadadedados.h">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/interface.c">
+		<Unit filename="F:/Projeto LA/Final acho eu/interface.c">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/interface.h">
+		<Unit filename="F:/Projeto LA/Final acho eu/interface.h">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/logic.c">
+		<Unit filename="F:/Projeto LA/Final acho eu/lista.c">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/logic.h">
+		<Unit filename="F:/Projeto LA/Final acho eu/lista.h">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/main.c">
+		<Unit filename="F:/Projeto LA/Final acho eu/logic.c">
 			<Option target="RastrosProject"/>
 		</Unit>
-		<Unit filename="F:/Projeto LA/Mark 7 untampered/CMakeLists.txt">
+		<Unit filename="F:/Projeto LA/Final acho eu/logic.h">
+			<Option target="RastrosProject"/>
+		</Unit>
+		<Unit filename="F:/Projeto LA/Final acho eu/main.c">
+			<Option target="RastrosProject"/>
+		</Unit>
+		<Unit filename="F:/Projeto LA/Final acho eu/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

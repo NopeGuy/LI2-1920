@@ -47,10 +47,10 @@ RM = "F:\Programs\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "F:\Projeto LA\Mark 7 untampered"
+CMAKE_SOURCE_DIR = "F:\Projeto LA\Final acho eu"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "F:\Projeto LA\Mark 7 untampered\cmake-build-debug"
+CMAKE_BINARY_DIR = "F:\Projeto LA\Final acho eu\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" "F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" "F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Projeto LA\Mark 7 untampered\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Projeto LA\Final acho eu\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,33 @@ interface.c.s:
 	$(MAKE) -f CMakeFiles\RastrosProject.dir\build.make CMakeFiles/RastrosProject.dir/interface.c.s
 .PHONY : interface.c.s
 
+lista.obj: lista.c.obj
+
+.PHONY : lista.obj
+
+# target to build an object file
+lista.c.obj:
+	$(MAKE) -f CMakeFiles\RastrosProject.dir\build.make CMakeFiles/RastrosProject.dir/lista.c.obj
+.PHONY : lista.c.obj
+
+lista.i: lista.c.i
+
+.PHONY : lista.i
+
+# target to preprocess a source file
+lista.c.i:
+	$(MAKE) -f CMakeFiles\RastrosProject.dir\build.make CMakeFiles/RastrosProject.dir/lista.c.i
+.PHONY : lista.c.i
+
+lista.s: lista.c.s
+
+.PHONY : lista.s
+
+# target to generate assembly for a file
+lista.c.s:
+	$(MAKE) -f CMakeFiles\RastrosProject.dir\build.make CMakeFiles/RastrosProject.dir/lista.c.s
+.PHONY : lista.c.s
+
 logic.obj: logic.c.obj
 
 .PHONY : logic.obj
@@ -245,6 +272,9 @@ help:
 	@echo ... interface.obj
 	@echo ... interface.i
 	@echo ... interface.s
+	@echo ... lista.obj
+	@echo ... lista.i
+	@echo ... lista.s
 	@echo ... logic.obj
 	@echo ... logic.i
 	@echo ... logic.s

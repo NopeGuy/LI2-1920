@@ -1,4 +1,4 @@
-"F:\Programs\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "F:\Projeto LA\Mark 7 untampered"
+"F:\Programs\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "F:\Projeto LA\Final acho eu"
 -- The C compiler identification is GNU 8.1.0
 -- Check for working C compiler: F:/Programs/mingw32/bin/gcc.exe
 -- Check for working C compiler: F:/Programs/mingw32/bin/gcc.exe -- works
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: F:/Projeto LA/Mark 7 untampered/cmake-build-debug
+-- Build files have been written to: F:/Projeto LA/Final acho eu/cmake-build-debug

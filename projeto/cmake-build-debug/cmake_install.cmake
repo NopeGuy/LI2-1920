@@ -1,4 +1,4 @@
-# Install script for directory: F:/Projeto LA/Mark 7 untampered
+# Install script for directory: F:/Projeto LA/Final acho eu
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "F:/Projeto LA/Mark 7 untampered/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "F:/Projeto LA/Final acho eu/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
