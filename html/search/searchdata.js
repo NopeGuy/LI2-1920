@@ -5,7 +5,8 @@ var indexSectionsWithContent =
   2: "cil",
   3: "acdgilprs",
   4: "j",
-  5: "c"
+  5: "c",
+  6: "r"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "typedefs",
-  5: "enums"
+  5: "enums",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Files",
   3: "Functions",
   4: "Typedefs",
-  5: "Enumerations"
+  5: "Enumerations",
+  6: "Pages"
 };
 
