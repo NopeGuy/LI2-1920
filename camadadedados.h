@@ -62,7 +62,9 @@ typedef struct {
 } ESTADO;
 
 /**
-*\brief Prepara as condiçoes para o inicio do jogo , poe a primeira jogada e define o jogador atual e o numero de jogadas.
+*\brief Prepara as condiçoes para o inicio do jogo , poe a primeira jogada e define o jogador atual e o número de jogadas.
+@param e Apontador para o estado
+@param c A Coordenada
 */
 
 ESTADO *inicializar_estado();

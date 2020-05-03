@@ -24,6 +24,7 @@ int check_finish(char letter, char number, ESTADO *e);
  * Esta função considera se uma jogada de um jogador é válida ou não e move a peça branca, caso a casa esteja vazia então a jogada é valida.
  * As funçoes ultima_jogada.linha , ultima_jogada.coluna , jogador atual , num_jogadas, jogador2.coluna/linhas e jogador1.coluna/linha são funções de estado que guardam o valor, que depois sempre que sao chamadas através do e->"..." aplica esse valor que estava guardado.
  * Por fim esta função verifica se uma jogada é impossivel ou não, isto é, se a casa existe, ou se a casa que o jogador quer jogar é consecutiva aquela onde ele se situa.
+ @param e Apontador para o estado do jogo
 */
 
 int add_position(char letter, char number, ESTADO *e);
