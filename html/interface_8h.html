@@ -63,7 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">interface.h File Reference</div>  </div>
 </div><!--header-->
@@ -81,12 +82,18 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abef6a3cea4024b440dd53791f894d859"><td class="memItemLeft" align="right" valign="top"><a id="abef6a3cea4024b440dd53791f894d859"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#abef6a3cea4024b440dd53791f894d859">printBoard</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:abef6a3cea4024b440dd53791f894d859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta função constrói os tabuleiros. Esta função funciona através de ciclos onde o primeiro ciclo constroi a primeira linha do tabuleiro, sendo q isto só se repete até i &lt; n. ou seja até i &lt; 8 construindo assim um tabuleiro com 8 linhas e colunas. No fim é aplicado printf ("\n ") para introduzir espaços entre o tabuleiro e onde o jogador insere a jogada. <br /></td></tr>
+<tr class="memitem:abef6a3cea4024b440dd53791f894d859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#abef6a3cea4024b440dd53791f894d859">printBoard</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:abef6a3cea4024b440dd53791f894d859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta função constrói os tabuleiros. Esta função funciona através de ciclos onde o primeiro ciclo constroi a primeira linha do tabuleiro, sendo q isto só se repete até i &lt; n. ou seja até i &lt; 8 construindo assim um tabuleiro com 8 linhas e colunas. No fim é aplicado printf ("\n ") para introduzir espaços entre o tabuleiro e onde o jogador insere a jogada.  <a href="interface_8h.html#abef6a3cea4024b440dd53791f894d859">More...</a><br /></td></tr>
 <tr class="separator:abef6a3cea4024b440dd53791f894d859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24da95ebeede4a540e37790ce8be359b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a24da95ebeede4a540e37790ce8be359b">interpretador</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a24da95ebeede4a540e37790ce8be359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">O interpretador é a função aonde estão guardados os vários comandos. O interpretador também verifica se uma jogada introduzida é válida , dá o jogo como finalizado através da função check_finish e dá print a indicar o respectivo vencedor. O comandos "gr" guarda o estado do jogo num ficheiro. O comando "ler " lê o estado do jogo a partir do ficheiro guardado em "gr". O comando "jog" verifica as posiçães adjacentes que estão livres a partir da posição da peça branca e efetua uma jogada aleatória (Caso a peça branca esteja numa posição consecutiva á casa de vitória, essa jogada será sempre prioridade). O comando "jog2"(estratégia da distância_euclidiana) procura todas as jogadas possíveis a partir da posição em que a peça branca se encontra , depois percorre todas essas posições possíveis e calcula a distância euclidiana para ,assim, saber qual a é a posição mais perto da casa de vitória.(Caso a peça branca esteja numa posição consecutiva á casa de vitória, essa jogada será sempre prioridade).  <a href="interface_8h.html#a24da95ebeede4a540e37790ce8be359b">More...</a><br /></td></tr>
 <tr class="separator:a24da95ebeede4a540e37790ce8be359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad24ebffc3b7cd5e04988c49fdcb80293"><td class="memItemLeft" align="right" valign="top"><a id="ad24ebffc3b7cd5e04988c49fdcb80293"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>finish</b></td></tr>
+<tr class="separator:ad24ebffc3b7cd5e04988c49fdcb80293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Inicialização/configuração do tabuleiro e jogadas </p>
@@ -106,8 +113,40 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Função de verificação e inicialização Esta Função verifica se a jogada intruduzida é valida.Usa também os comandos "gr" , "ler" e "movs" Lê o estado do jogo através do ficheiro guardado com "gr", e aplica a função movs.</p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>O interpretador é a função aonde estão guardados os vários comandos. O interpretador também verifica se uma jogada introduzida é válida , dá o jogo como finalizado através da função check_finish e dá print a indicar o respectivo vencedor. O comandos "gr" guarda o estado do jogo num ficheiro. O comando "ler " lê o estado do jogo a partir do ficheiro guardado em "gr". O comando "jog" verifica as posiçães adjacentes que estão livres a partir da posição da peça branca e efetua uma jogada aleatória (Caso a peça branca esteja numa posição consecutiva á casa de vitória, essa jogada será sempre prioridade). O comando "jog2"(estratégia da distância_euclidiana) procura todas as jogadas possíveis a partir da posição em que a peça branca se encontra , depois percorre todas essas posições possíveis e calcula a distância euclidiana para ,assim, saber qual a é a posição mais perto da casa de vitória.(Caso a peça branca esteja numa posição consecutiva á casa de vitória, essa jogada será sempre prioridade). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abef6a3cea4024b440dd53791f894d859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef6a3cea4024b440dd53791f894d859">&#9670;&nbsp;</a></span>printBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printBoard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta função constrói os tabuleiros. Esta função funciona através de ciclos onde o primeiro ciclo constroi a primeira linha do tabuleiro, sendo q isto só se repete até i &lt; n. ou seja até i &lt; 8 construindo assim um tabuleiro com 8 linhas e colunas. No fim é aplicado printf ("\n ") para introduzir espaços entre o tabuleiro e onde o jogador insere a jogada. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

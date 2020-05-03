@@ -68,17 +68,18 @@ $(function() {
 <a href="logic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef RASTROSPROJECT_LOGIC_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define RASTROSPROJECT_LOGIC_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="camadadedados_8h.html">camadadedados.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logic_8h.html#a43982fa6048da27b2c695d9e0ef6ac61">check_finish</a> (<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> number, <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="logic_8h.html#a8731ab1834933a90e6e2cea9ca4a111e">add_position</a>(<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> number, <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif //RASTROSPROJECT_LOGIC_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="camadadedados_8h.html">camadadedados.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logic_8h.html#a43982fa6048da27b2c695d9e0ef6ac61">check_finish</a>(<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> number, <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="logic_8h.html#a4e5a3116b44605378488af31039df61c">add_position</a>(<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> number, <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif //RASTROSPROJECT_LOGIC_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="alogic_8h_html_a43982fa6048da27b2c695d9e0ef6ac61"><div class="ttname"><a href="logic_8h.html#a43982fa6048da27b2c695d9e0ef6ac61">check_finish</a></div><div class="ttdeci">int check_finish(char letter, char number, ESTADO *e)</div><div class="ttdoc">Função que verifica quando o jogo se dá por terminado. Esta divide-se em 2 casos ,...</div><div class="ttdef"><b>Definition:</b> logic.c:7</div></div>
+<div class="ttc" id="alogic_8h_html_a43982fa6048da27b2c695d9e0ef6ac61"><div class="ttname"><a href="logic_8h.html#a43982fa6048da27b2c695d9e0ef6ac61">check_finish</a></div><div class="ttdeci">int check_finish(char letter, char number, ESTADO *e)</div><div class="ttdoc">Função que verifica quando o jogo se dá por terminado. Esta divide-se em 2 casos ,...</div><div class="ttdef"><b>Definition:</b> logic.c:5</div></div>
 <div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdef"><b>Definition:</b> camadadedados.h:55</div></div>
-<div class="ttc" id="alogic_8h_html_a8731ab1834933a90e6e2cea9ca4a111e"><div class="ttname"><a href="logic_8h.html#a8731ab1834933a90e6e2cea9ca4a111e">add_position</a></div><div class="ttdeci">bool add_position(char letter, char number, ESTADO *e)</div><div class="ttdoc">Função sobres as jogadas, funcionalidade e dados do jogo. Esta função considera se uma jogada de um j...</div><div class="ttdef"><b>Definition:</b> logic.c:36</div></div>
+<div class="ttc" id="alogic_8h_html_a4e5a3116b44605378488af31039df61c"><div class="ttname"><a href="logic_8h.html#a4e5a3116b44605378488af31039df61c">add_position</a></div><div class="ttdeci">int add_position(char letter, char number, ESTADO *e)</div><div class="ttdoc">Função sobres as jogadas, funcionalidade e dados do jogo. Esta função considera se uma jogada de um j...</div><div class="ttdef"><b>Definition:</b> logic.c:32</div></div>
 <div class="ttc" id="acamadadedados_8h_html"><div class="ttname"><a href="camadadedados_8h.html">camadadedados.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
