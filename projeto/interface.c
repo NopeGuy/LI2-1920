@@ -247,7 +247,7 @@ int interpretador(ESTADO *e) {
             int k = 0;
             bool played = false;
             LISTA posicoes = criar_lista();
-            if (finish = true)
+            if (finish == true)
                 puts("Jogo finalizado por favor escolha outro comando.");
             else {
                 for (int i = -1; i <= 1; i++) {
